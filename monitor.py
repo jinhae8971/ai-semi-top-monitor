@@ -25,6 +25,7 @@ from scoring import compute
 from history import (append_record, compute_momentum, momentum_label,
                      make_trend_chart)
 from auto_fundamentals import apply_auto
+import forward_validation as fv
 
 KST = timezone(timedelta(hours=9))
 
@@ -255,8 +256,22 @@ def main():
     latest_path = write_latest_json(result, momentum)
     print(f"   wrote {latest_path}")
 
+    # 전향(out-of-sample) 검증
+    try:
+        validation = fv.run(hist)
+        d = os.path.join(os.path.dirname(__file__), "data")
+        os.makedirs(d, exist_ok=True)
+        with open(os.path.join(d, "validation.json"), "w", encoding="utf-8") as vf:
+            json.dump(validation, vf, ensure_ascii=False, indent=2)
+        print(f"   validation: {validation.get('status')}")
+    except Exception as e:
+        validation = None
+        print(f"   [warn] forward_validation skipped: {e}")
+
     narrative = ai_narrative(result, cfg.get("anthropic_api_key", ""))
     report = build_report(result, narrative, momentum)
+    if validation:
+        report += "\n\n" + "\n".join(fv.report_line(validation))
     if applied.get("stale_warning"):
         report += "\n⏳ <i>수동 펀더멘털 갱신 권장 (45일+ 경과)</i>"
 
