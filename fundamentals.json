@@ -1,0 +1,59 @@
+{
+  "_README": "분기/월간 수동 갱신 계층. 실적시즌·TrendForce·SEMI 리포트 발표 후 아래 값을 업데이트. 시장데이터(가격/RSI/200DMA/streak)는 yfinance로 자동 수집되므로 여기 입력 불필요.",
+  "_last_updated": "2026-05-30",
+
+  "capex": {
+    "_desc": "하이퍼스케일러 capex YoY 성장률 시계열(분기). 최신값을 배열 끝에 append. 핵심은 '레벨'이 아니라 '성장률의 2차 미분(가속->감속)'.",
+    "_source": "MSFT/GOOGL/AMZN/META 분기실적. 2026 합산 ~$725B(+77% YoY, FT 집계). MSFT capex +84% YoY, GOOGL >2x YoY.",
+    "yoy_growth_history_pct": [55, 62, 70, 77],
+    "guidance_direction": "raised",
+    "_guidance_options": "raised | held | cut",
+    "fcf_status": "compressing",
+    "_fcf_options": "positive | compressing | negative  (Amazon FCF 마이너스 전환 전망, 그러나 GOOGL은 양수 유지)",
+    "eps_revision_breadth": "rising",
+    "_eps_options": "rising | flat | falling  (반도체 forward EPS 추정치 net revision. falling 전환 시 결정적 트리거 #3)"
+  },
+
+  "supply_demand": {
+    "_desc": "메모리 ASP QoQ 상승률 시계열 + Book-to-Bill + 재고. ASP는 상승률(QoQ)을 입력하며 '상승률이 꺾이는 peak-out'이 천장 신호.",
+    "_source": "TrendForce: Q1'26 DRAM +80~90% QoQ, Q2'26 +58~63% QoQ (상승률 둔화 시작). DRAM deficit -4.9%, HBM -5.1% (2011년 이후 최고). Goldman: 공급부족 2027년까지 지속 전망.",
+    "asp_qoq_history_pct": [35, 55, 85, 60],
+    "book_to_bill": 1.08,
+    "_book_to_bill_note": "SEMI 월간 B/B (장비 기준) 또는 메모리 수주잔고 프록시. 1.0 하회 전환 시 결정적 트리거. *현재값은 추정 - SEMI 리포트로 검증 필요*",
+    "inventory_trend": "tight",
+    "_inventory_options": "tight | stabilizing | rising"
+  },
+
+  "financing": {
+    "_desc": "순환출자/벤더파이낸싱 구조 리스크. 닷컴 telecom vendor financing 붕괴와 동일 메커니즘.",
+    "_source": "NVDA가 OpenAI $100B 투자 후퇴('not in the cards'). $800B+ 순환출자 구조. AMD가 Meta/OpenAI에 신주인수권. OpenAI 2026 적자 $14B 전망.",
+    "circular_financing_trend": "contracting",
+    "_circ_options": "expanding | plateauing | contracting  (contracting=인위적 수요 소멸=약세. 구조적 균열 플래그 발화)",
+    "revenue_quality": "high_vendor_dependence",
+    "_rq_options": "clean | some_vendor_financing | high_vendor_dependence",
+    "dc_credit_spread": "tight",
+    "_spread_options": "tight | widening  (데이터센터 채권 스프레드)"
+  },
+
+  "valuation": {
+    "_desc": "SOX forward P/E 의 10년 percentile (가장 정확). 미입력 시 가격 percentile로 자동 프록시.",
+    "_source": "미국 반도체 합산 시총 $6.3T, NVDA 단독 $5T 돌파. forward P/E 역사적 상단권 추정.",
+    "sox_fwd_pe_percentile": 90
+  },
+
+  "sentiment": {
+    "_desc": "수동 보강용. streak/주간수익률/200DMA/VIX는 yfinance 자동.",
+    "_source": "SOXX/SMH 사상최대 월간 유입. 23일 중 22일 상승. Michael Burry SOXX/NVDA/Oracle 풋옵션 진입.",
+    "etf_flow_state": "record_inflow",
+    "_flow_options": "outflow | neutral | record_inflow",
+    "smart_money_short": true,
+    "_short_note": "유명 공매도(Burry 등) 진입 여부"
+  },
+
+  "technical": {
+    "_desc": "RSI/200DMA는 yfinance 자동. 브레드스 다이버전스만 수동.",
+    "_source": "현재는 NVDA 단독->AMD/Micron/Intel 리더십 확산 국면(다이버전스 아직 없음).",
+    "breadth_divergence": false,
+    "_div_note": "지수 신고가인데 신고가 종목수 감소 시 true"
+  }
+}

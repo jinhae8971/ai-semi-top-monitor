@@ -1,0 +1,17 @@
+[
+  {
+    "date": "2026-05-30",
+    "composite": 58.7,
+    "regime": "LATE_CYCLE",
+    "decisive_count": 0,
+    "structural_crack": true,
+    "categories": {
+      "capex": 32.0,
+      "supply_demand": 57.0,
+      "financing": 76.2,
+      "valuation": 91.0,
+      "sentiment": 72.8,
+      "technical": 63.4
+    }
+  }
+]

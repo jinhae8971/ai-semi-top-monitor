@@ -1,0 +1,29 @@
+{
+  "generated_at": "2026-05-29T23:11:58.623135+00:00",
+  "generated_at_kst": "2026-05-30 08:11 KST",
+  "asts": {
+    "composite": 58.7,
+    "phase": "LATE_CYCLE",
+    "emoji": "🟡",
+    "color": "#eab308",
+    "dimensions": {
+      "capex": 32.0,
+      "supply_demand": 57.0,
+      "financing": 76.2,
+      "valuation": 91.0,
+      "sentiment": 72.8,
+      "technical": 63.4
+    },
+    "decisive_triggers": {
+      "capex_decel": false,
+      "supply_peak_out": false,
+      "eps_revision_down": false
+    },
+    "decisive_count": 0,
+    "structural_crack": true,
+    "momentum": {
+      "latest": 58.7,
+      "n_points": 1
+    }
+  }
+}

@@ -1,0 +1,5 @@
+{
+  "telegram_token": "여기에_텔레그램_봇_토큰",
+  "telegram_chat_id": "여기에_chat_id",
+  "anthropic_api_key": "선택사항_있으면_AI코멘트_추가"
+}

@@ -1,0 +1,51 @@
+name: AI Semi Cycle-Top Monitor
+
+on:
+  schedule:
+    # 평일 오전 7시 KST = 전날 22:00 UTC (일~목)
+    - cron: "0 22 * * 0-4"
+  workflow_dispatch:        # 수동 테스트용
+
+permissions:
+  contents: write           # state/history.json 커밋백용
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+      - run: pip install -r requirements.txt
+      - name: Run cycle-top monitor
+        env:
+          TELEGRAM_TOKEN:    ${{ secrets.TELEGRAM_TOKEN }}
+          TELEGRAM_CHAT_ID:  ${{ secrets.TELEGRAM_CHAT_ID }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          TZ: "Asia/Seoul"
+        run: python monitor.py
+      - name: Persist history & hub feed
+        if: always()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add state/history.json data/latest.json || true
+          git commit -m "chore: update composite history + hub feed [skip ci]" || echo "no changes"
+          git push || echo "push skipped"
+      - name: Notify failure
+        if: failure()
+        env:
+          TELEGRAM_TOKEN:   ${{ secrets.TELEGRAM_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: |
+          python - <<'EOF'
+          import os, requests
+          requests.post(
+              f"https://api.telegram.org/bot{os.environ['TELEGRAM_TOKEN']}/sendMessage",
+              json={"chat_id": os.environ["TELEGRAM_CHAT_ID"],
+                    "text": "AI Semi Cycle-Top Monitor 실행 실패! Actions 로그 확인"},
+              timeout=10)
+          EOF
