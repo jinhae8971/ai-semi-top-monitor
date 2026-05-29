@@ -135,7 +135,29 @@ def make_trend_chart(hist: list[dict], path: str = "/tmp/asm_trend.png") -> str 
 
     # 추세선
     ax.plot(dates, comp, color="#4ea1ff", lw=2.2, marker="o", ms=5,
-            mfc="#ffffff", mec="#4ea1ff", zorder=3)
+            mfc="#ffffff", mec="#4ea1ff", zorder=3, label="Composite")
+
+    # KOSPI 누적 오버레이 (보조축) - 검증용
+    try:
+        import yfinance as yf
+        ks = yf.Ticker("^KS11").history(period="3mo", auto_adjust=True)["Close"]
+        ks.index = ks.index.tz_localize(None).normalize()
+        ks = ks[ks.index >= dates[0]] if len(dates) > 1 else ks.tail(20)
+        if len(ks) >= 2:
+            ks_cum = ks / ks.iloc[0] * 100.0
+            ax_k = ax.twinx()
+            ax_k.plot(ks_cum.index, ks_cum.values, color="#f4a340", lw=1.6,
+                      alpha=0.9, zorder=2, label="KOSPI (cum, start=100)")
+            ax_k.set_ylabel("KOSPI cumulative", color="#f4a340", fontsize=8)
+            ax_k.tick_params(axis="y", colors="#f4a340", labelsize=7)
+            for s in ax_k.spines.values():
+                s.set_color("#333333")
+            lk, lbk = ax_k.get_legend_handles_labels()
+            lc, lbc = ax.get_legend_handles_labels()
+            ax.legend(lc + lk, lbc + lbk, loc="upper left", fontsize=7,
+                      facecolor="#1a1d26", edgecolor="#333333", labelcolor="white")
+    except Exception as e:
+        print(f"[warn] KOSPI overlay skipped: {e}")
 
     # 최신 포인트 강조
     last_c = comp[-1]
