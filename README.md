@@ -41,6 +41,34 @@ Telegram 알림 + 평일 7AM KST)을 그대로 따른다.
 
 + 구조: 순환출자 균열 (단독으로는 격상 안 함, 경고 표시)
 
+## 자동화 계층 (v1.2)
+
+`auto_fundamentals.py`가 매 실행마다 자동 추출 가능한 펀더멘털을 갱신한다 (수동 필드는 보존):
+- **Capex**: yfinance 빅4(MSFT/GOOGL/AMZN/META) 분기 cashflow → aggregate YoY 성장률 + FCF 상태 (분기태그로 dedupe, 신규 분기 자동 append)
+- **신용 스프레드**: FRED HY OAS(BAMLH0A0HYM2, 키 불필요) → tight/widening 자동 판정
+- **스테일니스 가드**: 수동 필드(ASP/B2B/순환출자)가 45일+ 경과 시 리포트에 경고
+
+여전히 수동(분기/월간)으로 갱신할 것: 메모리 ASP, Book-to-Bill, 순환출자 추세, EPS revision breadth.
+
+## 검증 철학 (v1.4) — 전향(forward) 검증 주력
+
+현재 AI capex 슈퍼사이클은 역사적 유사 국면이 없는 regime이라, 다른 성격의 과거
+사이클에 fitting하는 백테스트는 표본 대표성이 약하다. 따라서 **out-of-sample 전향
+검증을 주력**으로 한다.
+
+- **`forward_validation.py`**: 매 실행마다 박제되는 신호 스냅샷(history.json)을
+  시간이 지나며 실현된 KOSPI 결과와 자동 페어링 → 현재 regime 내 5/20/60거래일
+  예측력(상관·과열후 하락률·작동여부)을 `n≥12`부터 누적 집계. `data/validation.json` 발행.
+  TOP 지표가 유효하면 composite↑ → 향후 KOSPI 수익률↓ (음의 상관).
+- **`backtest.py`** (참고용): 2년 과거 시장신호 vs KOSPI. *"과거는 대표성 없음"의 근거
+  자료*로 보존 — 강세장 표본에선 단기 타이밍 효과가 확인되지 않음(corr +0.11~+0.15).
+
+## 생태계 통합
+
+- **cycle-intelligence-hub**: `data/latest.json`(`asts` 스키마)을 GitHub Pages로 발행 → hub registry에 `ASTS`로 등록. CCI/ASCI/KVR/UVR와 함께 통합 대시보드 표출
+- **github-actions-dashboard**: `config/systems.yaml`의 `cycle-intelligence` 그룹에 producer로 등록
+- 데이터 피드: `https://jinhae8971.github.io/ai-semi-top-monitor/data/latest.json`
+
 ## 파일 구조
 
 ```
