@@ -26,7 +26,7 @@ from history import (append_record, compute_momentum, momentum_label,
                      make_trend_chart)
 from auto_fundamentals import apply_auto
 import forward_validation as fv
-from memory_chart import make_memory_ytd_chart
+from memory_chart import make_memory_ytd_chart, SERIES
 from fwd_pe_chart import make_fwd_pe_chart
 import breadth as breadth_mod
 import catalysts
@@ -237,6 +237,82 @@ def write_latest_json(result: dict, momentum: dict) -> str:
     return path
 
 
+# ----------------------------------------------------------------------------
+# 대시보드 전용 통합 피드 (리포트 전체 내용 영속화)
+# ----------------------------------------------------------------------------
+def write_dashboard_feed(result: dict, momentum: dict, breadth_data: dict,
+                         validation: dict | None, hist: list) -> str:
+    """data/dashboard.json — 텔레그램 리포트의 모든 섹션을 단일 피드로 영속화.
+    대시보드(GitHub Pages)가 이 파일 하나만 읽어 전체를 렌더한다.
+    실패해도 본 파이프라인(텔레그램/latest.json)에는 영향 없음."""
+    here = os.path.dirname(__file__)
+    state_dir = os.path.join(here, "state")
+
+    try:
+        catalysts_up = catalysts.get_upcoming(14)
+    except Exception as e:
+        catalysts_up = []
+        print(f"   [warn] feed catalysts: {e}")
+    try:
+        _, ytd_sum = make_memory_ytd_chart()
+    except Exception as e:
+        ytd_sum = {}
+        print(f"   [warn] feed ytd: {e}")
+    try:
+        _, pe_cur = make_fwd_pe_chart()
+    except Exception as e:
+        pe_cur = {}
+        print(f"   [warn] feed fwd_pe: {e}")
+
+    def _load(name):
+        p = os.path.join(state_dir, name)
+        if os.path.exists(p):
+            try:
+                with open(p, "r", encoding="utf-8") as f:
+                    return json.load(f)
+            except Exception:
+                return None
+        return None
+
+    pe_hist = _load("fwd_pe_history.json") or []
+    journal = _load("signal_journal.json") or []
+    reg = result["regime"]
+
+    feed = {
+        "generated_at": datetime.now(timezone.utc).isoformat(),
+        "generated_at_kst": datetime.now(KST).strftime("%Y-%m-%d %H:%M KST"),
+        "composite": result["composite"],
+        "regime": {
+            "name": reg["name"], "emoji": reg["emoji"], "desc": reg.get("desc", ""),
+            "color": REGIME_COLOR.get(reg["name"], "#9ca3af"),
+        },
+        "base_regime": result.get("base_regime"),
+        "escalated": result.get("escalated", False),
+        "decisive_count": result["decisive_count"],
+        "decisive_triggers": result["decisive_triggers"],
+        "structural_crack": result.get("structural_crack", False),
+        "categories": result["categories"],
+        "momentum": momentum or {},
+        "momentum_label": momentum_label(momentum) if momentum else "",
+        "data_gaps": result.get("data_gaps", []),
+        "breadth": breadth_data or {},
+        "validation": validation or {},
+        "catalysts": catalysts_up,
+        "journal": journal,
+        "ytd": ytd_sum,
+        "fwd_pe": {"current": pe_cur, "history": pe_hist},
+        "series_colors": {name: col for name, (tk, col) in SERIES.items()},
+        "history": hist,
+    }
+    d = os.path.join(here, "data")
+    os.makedirs(d, exist_ok=True)
+    path = os.path.join(d, "dashboard.json")
+    with open(path, "w", encoding="utf-8") as f:
+        json.dump(feed, f, ensure_ascii=False, indent=2)
+    return path
+
+
+
 def main():
     cfg = load_config()
     print("[1/4] fetching market data ...")
@@ -283,6 +359,13 @@ def main():
     except Exception as e:
         validation = None
         print(f"   [warn] forward_validation skipped: {e}")
+
+    # 대시보드 통합 피드 영속화 (실패해도 본 파이프라인 무영향)
+    try:
+        feed_path = write_dashboard_feed(result, momentum, breadth_data, validation, hist)
+        print(f"   wrote {feed_path}")
+    except Exception as e:
+        print(f"   [warn] dashboard feed skipped: {e}")
 
     narrative = ai_narrative(result, cfg.get("anthropic_api_key", ""))
     report = build_report(result, narrative, momentum)
