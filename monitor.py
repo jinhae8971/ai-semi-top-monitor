@@ -28,6 +28,8 @@ from auto_fundamentals import apply_auto
 import forward_validation as fv
 from memory_chart import make_memory_ytd_chart
 from fwd_pe_chart import make_fwd_pe_chart
+import breadth as breadth_mod
+import catalysts
 
 KST = timezone(timedelta(hours=9))
 
@@ -247,6 +249,17 @@ def main():
     except Exception as e:
         applied = {"notes": [], "stale_warning": False}
         print(f"   [warn] auto_fundamentals skipped: {e}")
+
+    # 브레드스 자동 계산 → technical 카테고리 divergence 주입
+    try:
+        breadth_data = breadth_mod.compute()
+        if breadth_data:
+            fundamentals.setdefault("technical", {})["breadth_divergence"] = breadth_data["divergence"]
+            print(f"   breadth: 200dma {breadth_data['pct_above_200dma']}% · div {breadth_data['divergence']}")
+    except Exception as e:
+        breadth_data = {}
+        print(f"   [warn] breadth skipped: {e}")
+
     print("[3/4] scoring ...")
     result = compute(market, fundamentals)
     print(json.dumps(result, ensure_ascii=False, indent=2))
@@ -274,6 +287,12 @@ def main():
     report = build_report(result, narrative, momentum)
     if validation:
         report += "\n\n" + "\n".join(fv.report_line(validation))
+    if breadth_data:
+        report += "\n\n" + "\n".join(breadth_mod.report_lines(breadth_data))
+    try:
+        report += "\n\n" + "\n".join(catalysts.report_lines(14))
+    except Exception as e:
+        print(f"   [warn] catalysts skipped: {e}")
     if applied.get("stale_warning"):
         report += "\n⏳ <i>수동 펀더멘털 갱신 권장 (45일+ 경과)</i>"
 
