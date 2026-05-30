@@ -1,10 +1,12 @@
 """
 memory_chart.py
 ===============
-메모리 4강(삼성전자·SK하이닉스·Micron·SanDisk)의 연초대비(YTD) 수익률
-트렌드 차트를 생성한다. 연초 기준은 실행 연도 기준으로 자동 계산.
+반도체 리더 종목들의 연초대비(YTD) 수익률 트렌드 차트를 생성한다.
+(삼성전자·SK하이닉스·Micron·SanDisk·NVIDIA·Intel)
+연초 기준은 실행 연도 기준으로 자동 계산.
 
 monitor 가 매 실행마다 호출 → 텔레그램으로 추세차트와 함께 발송.
+종목 추가/교체는 아래 SERIES dict 만 수정.
 """
 from __future__ import annotations
 from datetime import datetime, timezone, timedelta
@@ -16,6 +18,8 @@ SERIES = {
     "SK Hynix (000660)":     ("000660.KS", "#f4a340"),
     "Micron (MU)":           ("MU",        "#22c55e"),
     "SanDisk (SNDK)":        ("SNDK",      "#ef4444"),
+    "NVIDIA (NVDA)":         ("NVDA",      "#a855f7"),
+    "Intel (INTC)":          ("INTC",      "#facc15"),
 }
 
 
@@ -63,7 +67,7 @@ def make_memory_ytd_chart(path: str = "/tmp/memory_ytd.png") -> tuple[str | None
         ax.annotate(t, (x, y), textcoords="offset points", xytext=(6, 0),
                     fontsize=9, fontweight="bold", color=col, va="center")
 
-    ax.set_title(f"Memory Makers  ·  YTD {year} Return (Year-to-Date)",
+    ax.set_title(f"Semiconductor Leaders  ·  YTD {year} Return (Year-to-Date)",
                  color="white", fontsize=14, fontweight="bold", pad=12)
     ax.set_ylabel("YTD Return (%)", color="#cccccc", fontsize=10)
     ax.tick_params(colors="#aaaaaa", labelsize=9)

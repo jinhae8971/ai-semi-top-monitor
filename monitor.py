@@ -296,7 +296,7 @@ def main():
         mem_path, mem_sum = make_memory_ytd_chart()
         if mem_path:
             top = max(mem_sum, key=mem_sum.get) if mem_sum else None
-            cap = "💾 Memory Makers · YTD"
+            cap = "🔬 Semi Leaders · YTD"
             if top:
                 cap += f" (top: {top.split(' (')[0]} {mem_sum[top]:+.0f}%)"
             send_telegram_photo(mem_path, cap, cfg["telegram_token"], cfg["telegram_chat_id"])
