@@ -27,6 +27,7 @@ from history import (append_record, compute_momentum, momentum_label,
 from auto_fundamentals import apply_auto
 import forward_validation as fv
 from memory_chart import make_memory_ytd_chart
+from fwd_pe_chart import make_fwd_pe_chart
 
 KST = timezone(timedelta(hours=9))
 
@@ -302,6 +303,17 @@ def main():
             send_telegram_photo(mem_path, cap, cfg["telegram_token"], cfg["telegram_chat_id"])
     except Exception as e:
         print(f"[warn] memory chart skipped: {e}")
+    # 반도체 리더 forward P/E 차트
+    try:
+        pe_path, pe_sum = make_fwd_pe_chart()
+        if pe_path:
+            cheapest = min(pe_sum, key=pe_sum.get) if pe_sum else None
+            cap = "🏷️ Semi Leaders · Forward P/E"
+            if cheapest:
+                cap += f" (lowest: {cheapest.split(' (')[0]} {pe_sum[cheapest]:.1f}x)"
+            send_telegram_photo(pe_path, cap, cfg["telegram_token"], cfg["telegram_chat_id"])
+    except Exception as e:
+        print(f"[warn] fwd_pe chart skipped: {e}")
     print("done.")
 
 
