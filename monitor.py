@@ -30,6 +30,7 @@ from memory_chart import make_memory_ytd_chart
 from fwd_pe_chart import make_fwd_pe_chart
 import breadth as breadth_mod
 import catalysts
+import signal_journal
 
 KST = timezone(timedelta(hours=9))
 
@@ -289,6 +290,12 @@ def main():
         report += "\n\n" + "\n".join(fv.report_line(validation))
     if breadth_data:
         report += "\n\n" + "\n".join(breadth_mod.report_lines(breadth_data))
+    # 시그널 저널 (이벤트 박제 + 경로 추적)
+    try:
+        journal, new_events = signal_journal.run(result, breadth_data)
+        report += "\n\n" + "\n".join(signal_journal.report_lines(journal, new_events))
+    except Exception as e:
+        print(f"   [warn] signal_journal skipped: {e}")
     try:
         report += "\n\n" + "\n".join(catalysts.report_lines(14))
     except Exception as e:
