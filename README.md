@@ -131,3 +131,38 @@ REPORT_MAP["ai-semi-top-monitor"] = {
 
 ---
 *본 모니터는 정보 제공용이며 투자 권유가 아닙니다.*
+
+---
+
+## CHANGELOG — 2026-05-30 구축 기록
+
+하루에 v1.0 → v1.9 로 구축. 진행 순서:
+
+| 버전 | 내용 |
+|---|---|
+| v1.0 | 초기 배포. 6카테고리 composite + 5-tier regime + 결정적 트리거 오버레이, yfinance + fundamentals.json, Telegram 리포트, 평일 7AM KST |
+| v1.1 | history 영속화(`state/history.json`) + composite 추세 차트(velocity 모멘텀), Telegram 사진 발송 |
+| v1.2 | 자동 펀더멘털(`auto_fundamentals.py` — 빅4 capex YoY + FRED HY OAS), `data/latest.json` hub 피드. 레포 public 전환 + GitHub Pages |
+| v1.3 | 추세 차트에 KOSPI 누적 오버레이 + `backtest.py`(2년 시장신호 vs KOSPI 단기 검증) |
+| v1.4 | 전향(out-of-sample) 검증(`forward_validation.py`) — 신호 스냅샷 ↔ 실현 KOSPI 페어링. 과거 백테스트 대신 전향 검증 주력 |
+| v1.5 | 메모리 4강 YTD 수익률 차트(`memory_chart.py`) Telegram 발송 |
+| v1.6 | NVIDIA·Intel 추가 → "Semiconductor Leaders" 6종 |
+| v1.7 | forward P/E 차트(`fwd_pe_chart.py` — 현재값 바 → 누적되면 로그 추세), `state/fwd_pe_history.json` |
+| v1.8 | 브레드스 자동화(`breadth.py` — 25종 바스켓, divergence 탐지 → technical 주입) + 카탈리스트 캘린더(`catalysts.py` — 실적일 + FOMC/CPI) |
+| v1.9 | 시그널 저널(`signal_journal.py` — 트리거/regime 전환 영구 박제 + 사후 KOSPI/SOX 경로 추적). git add 글롭 버그 수정(last_state 영속) |
+
+### 생태계 통합
+- `cycle-intelligence-hub/registry.yaml` 에 `ASTS` 등록 → hub_summary.json 표출 (CCI·ASCI·KVR·UVR와 함께 5번째 시스템)
+- `github-actions-dashboard/config/systems.yaml` 의 `cycle-intelligence` 그룹에 producer 등록
+
+### 매일 발송물 (평일 7AM KST · 텔레그램 "그래이프스" DM, chat_id 954137156)
+- 리포트: composite · regime · 결정적 트리거 · forward validation · breadth · signal journal · 카탈리스트
+- 차트 3종: composite 추세(+KOSPI) / Semiconductor Leaders YTD 6종 / forward P/E 6종
+
+### 2026-05-30 기준 판독
+Composite 58.7 / 100 · LATE_CYCLE. 선행 트리거 0/3(순환출자 균열만 ON), breadth 200일선 상회 100%(다이버전스 없음) → "과열이나 아직 꼭지 아님".
+
+### 다음 후보 작업
+- 드로다운/트레일링 스탑 알림(매매 트리거 성격 → 알림만)
+- fundamentals.json 추가 자동화(TrendForce ASP / SEMI B/B)
+- 다음 달: forward validation + signal journal 경로로 중간 점검
