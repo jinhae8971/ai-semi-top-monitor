@@ -1,0 +1,10 @@
+{
+  "triggers": {
+    "capex_decel": false,
+    "supply_peak_out": false,
+    "eps_revision_down": false
+  },
+  "structural_crack": true,
+  "regime": "LATE_CYCLE",
+  "breadth_divergence": false
+}
