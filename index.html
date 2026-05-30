@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Semi Cycle-Top Monitor</title>
+<meta name="description" content="AI 반도체 랠리의 천장(cycle top)을 다중지표 composite score로 판단하는 모니터 대시보드">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+  :root{
+    --bg:#080b12; --panel:#121a2b; --panel2:#0f1626; --line:#1f2c44;
+    --txt:#e6edf7; --muted:#8a98b0; --accent:#38bdf8;
+    --green:#22c55e; --yellow:#eab308; --orange:#f97316; --red:#ef4444; --blue:#3b82f6;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:radial-gradient(1200px 600px at 70% -10%,#16223b 0%,var(--bg) 55%);
+    color:var(--txt);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    min-height:100vh;padding:28px 18px 60px;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1180px;margin:0 auto}
+  header.top{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:14px;margin-bottom:22px}
+  .brand h1{font-size:22px;font-weight:700;letter-spacing:-.3px}
+  .brand .sub{color:var(--muted);font-size:13px;margin-top:4px;max-width:560px;line-height:1.5}
+  .stamp{text-align:right;font-size:12.5px;color:var(--muted);line-height:1.7}
+  .stamp .live{display:inline-flex;align-items:center;gap:6px;color:var(--green);font-weight:600}
+  .dot{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 0 0 rgba(34,197,94,.7);animation:pulse 2s infinite}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(34,197,94,.6)}70%{box-shadow:0 0 0 8px rgba(34,197,94,0)}100%{box-shadow:0 0 0 0 rgba(34,197,94,0)}}
+  .grid{display:grid;gap:16px}
+  .card{background:linear-gradient(180deg,var(--panel) 0%,var(--panel2) 100%);border:1px solid var(--line);border-radius:16px;padding:20px}
+  .card h2{font-size:13px;text-transform:uppercase;letter-spacing:1px;color:var(--muted);font-weight:600;margin-bottom:14px}
+  .hero{display:grid;grid-template-columns:300px 1fr;gap:24px;align-items:center}
+  @media(max-width:760px){.hero{grid-template-columns:1fr}}
+  .gauge-wrap{position:relative;text-align:center}
+  .gauge-val{position:absolute;left:0;right:0;top:96px;font-size:52px;font-weight:800;letter-spacing:-1px}
+  .gauge-max{font-size:16px;color:var(--muted);font-weight:600}
+  .phase-badge{display:inline-flex;align-items:center;gap:8px;font-size:18px;font-weight:700;padding:8px 16px;border-radius:999px;border:1px solid}
+  .hero-right .interp{margin-top:14px;font-size:15px;line-height:1.6;color:#cdd8ea}
+  .tier-legend{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+  .tier{font-size:11.5px;padding:4px 9px;border-radius:8px;border:1px solid var(--line);color:var(--muted);display:flex;align-items:center;gap:6px}
+  .tier i{width:9px;height:9px;border-radius:2px;display:inline-block}
+  .tier.on{color:var(--txt);border-color:currentColor;font-weight:700}
+  .cols{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  @media(max-width:760px){.cols{grid-template-columns:1fr}}
+  .dims{display:flex;flex-direction:column;gap:13px}
+  .dim .dim-top{display:flex;justify-content:space-between;align-items:baseline;font-size:13.5px;margin-bottom:5px}
+  .dim .dim-name{font-weight:600}
+  .dim .wtag{font-size:10.5px;color:var(--muted);border:1px solid var(--line);border-radius:6px;padding:1px 6px;margin-left:7px}
+  .dim .dim-val{font-variant-numeric:tabular-nums;font-weight:700}
+  .bar{height:9px;border-radius:6px;background:#0b1322;overflow:hidden}
+  .bar > i{display:block;height:100%;border-radius:6px;transition:width .6s ease}
+  .trig-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+  @media(max-width:760px){.trig-grid{grid-template-columns:1fr}}
+  .trig{border:1px solid var(--line);border-radius:12px;padding:14px;display:flex;gap:12px;align-items:flex-start;background:#0d1424}
+  .trig .ind{width:14px;height:14px;border-radius:50%;margin-top:3px;flex-shrink:0}
+  .trig .t-name{font-size:13.5px;font-weight:600}
+  .trig .t-desc{font-size:12px;color:var(--muted);margin-top:3px;line-height:1.45}
+  .trig .t-state{margin-left:auto;font-size:11px;font-weight:700;padding:2px 8px;border-radius:6px}
+  .summary-row{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+  @media(max-width:760px){.summary-row{grid-template-columns:repeat(2,1fr)}}
+  .kpi{background:#0d1424;border:1px solid var(--line);border-radius:12px;padding:14px}
+  .kpi .k-label{font-size:11.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px}
+  .kpi .k-val{font-size:24px;font-weight:800;margin-top:6px;font-variant-numeric:tabular-nums}
+  .kpi .k-sub{font-size:11.5px;color:var(--muted);margin-top:2px}
+  canvas{max-width:100%}
+  .note{font-size:12.5px;color:var(--muted);line-height:1.55;margin-top:10px}
+  footer{margin-top:30px;text-align:center;font-size:12px;color:var(--muted);line-height:1.8}
+  footer a{color:var(--accent);text-decoration:none}
+  .err{display:none;background:#2a1015;border:1px solid #5b2230;color:#ffb4b4;padding:12px 16px;border-radius:12px;font-size:13px;margin-bottom:16px}
+  .skeleton{color:var(--muted)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div class="brand">
+      <h1>AI Semi Cycle-Top Monitor</h1>
+      <div class="sub">AI 반도체 랠리의 <b>천장(cycle top)</b>을 6개 차원 composite score(0–100)와 5단계 레짐, 결정적 트리거로 판단하는 서버리스 모니터.</div>
+    </div>
+    <div class="stamp">
+      <div class="live"><span class="dot"></span> LIVE · 평일 07:00 KST 갱신</div>
+      <div id="stampKst" class="skeleton">데이터 불러오는 중…</div>
+    </div>
+  </header>
+
+  <div id="err" class="err"></div>
+
+  <div class="grid">
+    <section class="card hero">
+      <div class="gauge-wrap">
+        <canvas id="gauge" width="300" height="180"></canvas>
+        <div class="gauge-val"><span id="composite">–</span><span class="gauge-max"> / 100</span></div>
+      </div>
+      <div class="hero-right">
+        <span id="phaseBadge" class="phase-badge">–</span>
+        <div id="interp" class="interp"></div>
+        <div class="tier-legend" id="tierLegend"></div>
+      </div>
+    </section>
+
+    <div class="cols">
+      <section class="card">
+        <h2>6차원 지표 (0–100)</h2>
+        <div id="dims" class="dims"></div>
+      </section>
+      <section class="card">
+        <h2>지표 레이더</h2>
+        <canvas id="radar" height="300"></canvas>
+      </section>
+    </div>
+
+    <section class="card">
+      <h2>결정적 선행 트리거 <span id="trigCount" style="color:var(--txt)"></span></h2>
+      <div class="trig-grid" id="triggers"></div>
+    </section>
+
+    <section class="summary-row">
+      <div class="kpi"><div class="k-label">Structural Crack</div><div class="k-val" id="kCrack">–</div><div class="k-sub">순환출자 구조 균열</div></div>
+      <div class="kpi"><div class="k-label">Momentum</div><div class="k-val" id="kMom">–</div><div class="k-sub" id="kMomSub">composite velocity</div></div>
+      <div class="kpi"><div class="k-label">Snapshots</div><div class="k-val" id="kSnap">–</div><div class="k-sub">누적 시계열 포인트</div></div>
+      <div class="kpi"><div class="k-label">Validation</div><div class="k-val" id="kVal" style="font-size:18px">–</div><div class="k-sub" id="kValSub">forward 검증</div></div>
+    </section>
+
+    <section class="card">
+      <h2>Composite 추세</h2>
+      <canvas id="trend" height="240"></canvas>
+      <div class="note" id="trendNote"></div>
+    </section>
+  </div>
+
+  <footer>
+    <div>데이터 소스 ·
+      <a href="data/latest.json" target="_blank">latest.json</a> ·
+      <a href="state/history.json" target="_blank">history.json</a> ·
+      <a href="https://github.com/jinhae8971/ai-semi-top-monitor" target="_blank">GitHub Repo</a>
+    </div>
+    <div id="genAt"></div>
+    <div style="margin-top:6px;opacity:.7">투자 판단의 참고 지표일 뿐이며 매매 권유가 아닙니다.</div>
+  </footer>
+</div>
+
+<script>
+const TIERS = [
+  {min:0,  max:20, color:'#3b82f6', label:'ACCUMULATE', desc:'초기/안정'},
+  {min:20, max:40, color:'#22c55e', label:'EXPANSION',  desc:'확장'},
+  {min:40, max:60, color:'#eab308', label:'LATE_CYCLE', desc:'경계·일부 익절'},
+  {min:60, max:80, color:'#f97316', label:'EUPHORIA',   desc:'블로우오프·방어'},
+  {min:80, max:100,color:'#ef4444', label:'TOP',        desc:'천장·축소'}
+];
+const DIM_META = {
+  capex:        {name:'Capex 사이클',  w:'30%', note:'최강 선행'},
+  supply_demand:{name:'수급 / 물량',   w:'25%', note:'신뢰 동행'},
+  financing:    {name:'신용 / 파이낸싱',w:'20%', note:'구조 리스크'},
+  valuation:    {name:'밸류에이션',     w:'',    note:''},
+  sentiment:    {name:'센티먼트',       w:'',    note:''},
+  technical:    {name:'기술적 / 브레드스',w:'',  note:''}
+};
+const TRIG_META = {
+  capex_decel:    {name:'Capex 성장률 감속 전환', desc:'capex YoY 2차미분 ≤ −5%p'},
+  supply_peak_out:{name:'메모리 ASP peak-out',    desc:'ASP 하락 + Book-to-Bill < 1.0'},
+  eps_revision_down:{name:'EPS revision 하향 전환', desc:'EPS revision breadth 음전환'}
+};
+const colorFor = v => (TIERS.find(t=>v>=t.min && v<t.max) || TIERS[TIERS.length-1]).color;
+const bust = url => url + '?t=' + Date.now();
+
+async function getJSON(path){
+  const r = await fetch(bust(path), {cache:'no-store'});
+  if(!r.ok) throw new Error(path+' → HTTP '+r.status);
+  return r.json();
+}
+
+function drawGauge(v){
+  const c = document.getElementById('gauge'), ctx = c.getContext('2d');
+  const cx=150, cy=160, r=120, lw=22;
+  ctx.clearRect(0,0,c.width,c.height);
+  TIERS.forEach(t=>{
+    const a0 = Math.PI + (t.min/100)*Math.PI;
+    const a1 = Math.PI + (t.max/100)*Math.PI;
+    ctx.beginPath(); ctx.arc(cx,cy,r,a0,a1); ctx.lineWidth=lw;
+    ctx.strokeStyle=t.color; ctx.globalAlpha=.28; ctx.stroke(); ctx.globalAlpha=1;
+  });
+  const va = Math.PI + (Math.max(0,Math.min(100,v))/100)*Math.PI;
+  ctx.beginPath(); ctx.arc(cx,cy,r,Math.PI,va); ctx.lineWidth=lw;
+  ctx.strokeStyle=colorFor(v); ctx.lineCap='round'; ctx.stroke();
+  const na = Math.PI + (v/100)*Math.PI;
+  ctx.beginPath(); ctx.moveTo(cx,cy);
+  ctx.lineTo(cx+Math.cos(na)*(r-6), cy+Math.sin(na)*(r-6));
+  ctx.lineWidth=3; ctx.strokeStyle='#e6edf7'; ctx.stroke();
+  ctx.beginPath(); ctx.arc(cx,cy,7,0,2*Math.PI); ctx.fillStyle='#e6edf7'; ctx.fill();
+}
+
+let radarChart, trendChart;
+
+function render(latest, history, validation){
+  const a = latest.asts || {};
+  const comp = a.composite ?? 0;
+  document.getElementById('stampKst').textContent = '최종 산출 ' + (latest.generated_at_kst || '–');
+  document.getElementById('genAt').textContent = 'generated_at: ' + (latest.generated_at || '');
+
+  document.getElementById('composite').textContent = comp.toFixed(1);
+  drawGauge(comp);
+
+  const pc = a.color || colorFor(comp);
+  const badge = document.getElementById('phaseBadge');
+  const tCur = TIERS.find(x=>comp>=x.min && comp<x.max) || TIERS[TIERS.length-1];
+  badge.textContent = (a.emoji||'') + ' ' + (a.phase || tCur.label);
+  badge.style.color = pc; badge.style.borderColor = pc; badge.style.background = pc+'1a';
+
+  const dc = a.decisive_count ?? 0;
+  document.getElementById('interp').innerHTML =
+    'Composite <b>'+comp.toFixed(1)+'</b> · <b>'+(a.phase||tCur.label)+'</b> ('+tCur.desc+'). '+
+    '선행 트리거 <b>'+dc+'/3</b> 발동'+(a.structural_crack ? ', 순환출자 구조 균열 <b style="color:var(--orange)">ON</b>.' : '.');
+
+  document.getElementById('tierLegend').innerHTML = TIERS.map(x=>{
+    const on = comp>=x.min && comp<x.max ? ' on' : '';
+    return '<span class="tier'+on+'" style="'+(on?'color:'+x.color:'')+'"><i style="background:'+x.color+'"></i>'+x.min+'–'+x.max+' '+x.label+'</span>';
+  }).join('');
+
+  const dims = a.dimensions || {};
+  document.getElementById('dims').innerHTML = Object.keys(DIM_META).map(k=>{
+    const v = dims[k] ?? 0, m = DIM_META[k], col = colorFor(v);
+    return '<div class="dim"><div class="dim-top"><span class="dim-name">'+m.name+
+      (m.w?'<span class="wtag">'+m.w+(m.note?' · '+m.note:'')+'</span>':'')+'</span>'+
+      '<span class="dim-val" style="color:'+col+'">'+v.toFixed(1)+'</span></div>'+
+      '<div class="bar"><i style="width:'+v+'%;background:'+col+'"></i></div></div>';
+  }).join('');
+
+  const dimKeys = Object.keys(DIM_META);
+  const radarData = dimKeys.map(k=>dims[k] ?? 0);
+  if(radarChart) radarChart.destroy();
+  radarChart = new Chart(document.getElementById('radar'),{type:'radar',
+    data:{labels:dimKeys.map(k=>DIM_META[k].name),
+      datasets:[{label:'점수',data:radarData,fill:true,
+        backgroundColor:pc+'33',borderColor:pc,pointBackgroundColor:pc,borderWidth:2,pointRadius:3}]},
+    options:{plugins:{legend:{display:false}},
+      scales:{r:{min:0,max:100,ticks:{stepSize:20,color:'#5d6b85',backdropColor:'transparent',font:{size:10}},
+        grid:{color:'#1f2c44'},angleLines:{color:'#1f2c44'},
+        pointLabels:{color:'#c2cde0',font:{size:11.5}}}}}});
+
+  const trg = a.decisive_triggers || {};
+  document.getElementById('trigCount').textContent = '· '+dc+'/3 발동';
+  document.getElementById('triggers').innerHTML = Object.keys(TRIG_META).map(k=>{
+    const on = !!trg[k], m = TRIG_META[k];
+    const col = on ? 'var(--red)' : 'var(--green)';
+    return '<div class="trig"><span class="ind" style="background:'+col+'"></span>'+
+      '<div><div class="t-name">'+m.name+'</div><div class="t-desc">'+m.desc+'</div></div>'+
+      '<span class="t-state" style="color:'+col+';border:1px solid '+col+'">'+(on?'ON':'OFF')+'</span></div>';
+  }).join('');
+
+  const crack = a.structural_crack;
+  const ce = document.getElementById('kCrack');
+  ce.textContent = crack ? 'ON' : 'OFF'; ce.style.color = crack ? 'var(--orange)' : 'var(--green)';
+  const mom = a.momentum || {};
+  document.getElementById('kMom').textContent = (mom.latest!=null)?mom.latest.toFixed(1):'–';
+  document.getElementById('kMomSub').textContent = (mom.n_points||0)+' 포인트 누적';
+  document.getElementById('kSnap').textContent = (history && history.length) ? history.length : (validation.n_snapshots||0);
+  const vs = (validation.status||'–');
+  document.getElementById('kVal').textContent = vs === 'accumulating' ? '누적 중' : vs;
+  document.getElementById('kValSub').textContent = validation.note ? validation.note.slice(0,40) : 'forward 검증';
+
+  drawTrend(history);
+}
+
+function drawTrend(history){
+  history = Array.isArray(history)? history : [];
+  const labels = history.map(h=>h.date);
+  const data = history.map(h=>h.composite);
+  const note = document.getElementById('trendNote');
+  if(history.length < 2){
+    note.textContent = '시계열 '+history.length+'개 포인트 — 평일 누적되며 추세선이 형성됩니다. (velocity 모멘텀은 7일/30일 경과분부터)';
+  } else {
+    const d = data[data.length-1]-data[0];
+    note.textContent = '누적 '+history.length+'개 · 시작 '+data[0]+' → 현재 '+data[data.length-1]+' ('+(d>=0?'+':'')+d.toFixed(1)+')';
+  }
+  if(trendChart) trendChart.destroy();
+  const bands = {id:'bands',beforeDraw(c){
+    const {ctx,chartArea:{left,right},scales:{y}}=c;
+    TIERS.forEach(t=>{
+      const y0=y.getPixelForValue(t.max), y1=y.getPixelForValue(t.min);
+      ctx.save();ctx.fillStyle=t.color;ctx.globalAlpha=.07;
+      ctx.fillRect(left,y0,right-left,y1-y0);ctx.restore();
+    });
+  }};
+  trendChart = new Chart(document.getElementById('trend'),{type:'line',
+    data:{labels,datasets:[{label:'Composite',data,borderColor:'#38bdf8',
+      backgroundColor:'#38bdf833',borderWidth:2,pointRadius:history.length<30?4:0,
+      pointBackgroundColor:data.map(v=>colorFor(v)),tension:.25,fill:true}]},
+    options:{plugins:{legend:{display:false},
+      tooltip:{callbacks:{afterLabel:c=>{const h=history[c.dataIndex];return h?h.regime+' · 트리거 '+h.decisive_count+'/3':''}}}},
+      scales:{y:{min:0,max:100,ticks:{color:'#5d6b85',stepSize:20},grid:{color:'#16223b'}},
+        x:{ticks:{color:'#5d6b85',maxRotation:0,autoSkip:true},grid:{display:false}}}},
+    plugins:[bands]});
+}
+
+(async function(){
+  try{
+    const [latest, history, validation] = await Promise.all([
+      getJSON('data/latest.json'),
+      getJSON('state/history.json').catch(()=>[]),
+      getJSON('data/validation.json').catch(()=>({}))
+    ]);
+    render(latest, history||[], validation||{});
+  }catch(e){
+    const el = document.getElementById('err');
+    el.style.display='block';
+    el.textContent = '데이터 로드 실패: '+e.message+' — 워크플로우가 data/latest.json을 아직 생성하지 않았을 수 있습니다.';
+    document.getElementById('stampKst').textContent='로드 실패';
+  }
+})();
+</script>
+</body>
+</html>
