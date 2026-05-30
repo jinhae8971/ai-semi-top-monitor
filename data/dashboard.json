@@ -1,0 +1,177 @@
+{
+  "generated_at": "2026-05-30T11:03:34.831163+00:00",
+  "generated_at_kst": "2026-05-30 20:03 KST",
+  "composite": 58.7,
+  "regime": {
+    "name": "LATE_CYCLE",
+    "emoji": "🟡",
+    "desc": "후기 사이클 - 경계/일부 익절",
+    "color": "#eab308"
+  },
+  "base_regime": {
+    "name": "LATE_CYCLE",
+    "emoji": "🟡",
+    "desc": "후기 사이클 - 경계/일부 익절"
+  },
+  "escalated": false,
+  "decisive_count": 0,
+  "decisive_triggers": {
+    "capex_decel": false,
+    "supply_peak_out": false,
+    "eps_revision_down": false
+  },
+  "structural_crack": true,
+  "categories": {
+    "capex": {
+      "score": 32.0,
+      "weight": 0.3,
+      "label": "Capex 사이클",
+      "detail": {
+        "capex_growth_2nd_deriv_pp": 8.8,
+        "latest_yoy_growth_pct": 78.8,
+        "guidance_direction": "raised",
+        "fcf_status": "compressing"
+      }
+    },
+    "supply_demand": {
+      "score": 57.0,
+      "weight": 0.25,
+      "label": "수급/물량",
+      "detail": {
+        "asp_qoq_2nd_deriv_pp": -25.0,
+        "latest_asp_qoq_pct": 60,
+        "book_to_bill": 1.08,
+        "inventory_trend": "tight",
+        "asp_peak_out_forming": true
+      }
+    },
+    "financing": {
+      "score": 76.2,
+      "weight": 0.2,
+      "label": "신용/파이낸싱",
+      "detail": {
+        "circular_financing_trend": "contracting",
+        "revenue_quality": "high_vendor_dependence",
+        "dc_credit_spread": "tight"
+      }
+    },
+    "valuation": {
+      "score": 91.0,
+      "weight": 0.1,
+      "label": "밸류에이션",
+      "detail": {
+        "sox_fwd_pe_percentile": 90,
+        "sox_price_percentile_52w": 99.2,
+        "nvda_price_percentile_52w": 93.3
+      }
+    },
+    "sentiment": {
+      "score": 72.8,
+      "weight": 0.1,
+      "label": "센티먼트",
+      "detail": {
+        "win_days_in_23": 15,
+        "weekly_return_pct": 8.5,
+        "dist_above_200dma_pct": 69.4,
+        "vix": 15.3,
+        "smart_money_short": true,
+        "etf_flow_state": "record_inflow"
+      }
+    },
+    "technical": {
+      "score": 63.4,
+      "weight": 0.05,
+      "label": "기술적/브레드스",
+      "detail": {
+        "rsi14": 64.9,
+        "dist_above_200dma_pct": 69.4,
+        "breadth_divergence": false
+      }
+    }
+  },
+  "momentum": {
+    "latest": 58.7,
+    "n_points": 1
+  },
+  "momentum_label": "📊 추세 누적 중 (데이터 부족)",
+  "data_gaps": [],
+  "breadth": {
+    "basket_n": 25,
+    "pct_above_200dma": 100.0,
+    "pct_above_50dma": 100.0,
+    "net_new_highs_pct": 40.0,
+    "index_near_high": true,
+    "divergence": false,
+    "breadth_score": 0.0
+  },
+  "validation": {
+    "status": "accumulating",
+    "n_snapshots": 1,
+    "horizons": {},
+    "note": "스냅샷 누적 시작 - 검증은 5거래일 경과분부터 집계"
+  },
+  "catalysts": [
+    {
+      "date": "2026-06-10",
+      "label": "CPI (5월)",
+      "type": "macro"
+    }
+  ],
+  "journal": [],
+  "ytd": {
+    "Samsung Elec (005930)": 147.2,
+    "SK Hynix (000660)": 245.3,
+    "Micron (MU)": 208.0,
+    "SanDisk (SNDK)": 515.8,
+    "NVIDIA (NVDA)": 11.8,
+    "Intel (INTC)": 191.2
+  },
+  "fwd_pe": {
+    "current": {
+      "Samsung Elec (005930)": 5.94,
+      "SK Hynix (000660)": 6.1,
+      "Micron (MU)": 9.22,
+      "SanDisk (SNDK)": 9.63,
+      "NVIDIA (NVDA)": 16.68,
+      "Intel (INTC)": 74.48
+    },
+    "history": [
+      {
+        "date": "2026-05-30",
+        "values": {
+          "Samsung Elec (005930)": 5.94,
+          "SK Hynix (000660)": 6.1,
+          "Micron (MU)": 9.22,
+          "SanDisk (SNDK)": 9.63,
+          "NVIDIA (NVDA)": 16.68,
+          "Intel (INTC)": 74.48
+        }
+      }
+    ]
+  },
+  "series_colors": {
+    "Samsung Elec (005930)": "#4ea1ff",
+    "SK Hynix (000660)": "#f4a340",
+    "Micron (MU)": "#22c55e",
+    "SanDisk (SNDK)": "#ef4444",
+    "NVIDIA (NVDA)": "#a855f7",
+    "Intel (INTC)": "#facc15"
+  },
+  "history": [
+    {
+      "date": "2026-05-30",
+      "composite": 58.7,
+      "regime": "LATE_CYCLE",
+      "decisive_count": 0,
+      "structural_crack": true,
+      "categories": {
+        "capex": 32.0,
+        "supply_demand": 57.0,
+        "financing": 76.2,
+        "valuation": 91.0,
+        "sentiment": 72.8,
+        "technical": 63.4
+      }
+    }
+  ]
+}
