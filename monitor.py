@@ -26,6 +26,7 @@ from history import (append_record, compute_momentum, momentum_label,
                      make_trend_chart)
 from auto_fundamentals import apply_auto
 import forward_validation as fv
+from memory_chart import make_memory_ytd_chart
 
 KST = timezone(timedelta(hours=9))
 
@@ -290,6 +291,17 @@ def main():
             send_telegram_photo(chart_path, cap, cfg["telegram_token"], cfg["telegram_chat_id"])
         except Exception as e:
             print(f"[warn] photo send skipped: {e}")
+    # 메모리 4강 YTD 차트
+    try:
+        mem_path, mem_sum = make_memory_ytd_chart()
+        if mem_path:
+            top = max(mem_sum, key=mem_sum.get) if mem_sum else None
+            cap = "💾 Memory Makers · YTD"
+            if top:
+                cap += f" (top: {top.split(' (')[0]} {mem_sum[top]:+.0f}%)"
+            send_telegram_photo(mem_path, cap, cfg["telegram_token"], cfg["telegram_chat_id"])
+    except Exception as e:
+        print(f"[warn] memory chart skipped: {e}")
     print("done.")
 
 
