@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-05-30T11:27:54.332500+00:00",
-  "generated_at_kst": "2026-05-30 20:27 KST",
+  "generated_at": "2026-05-31T22:57:36.798218+00:00",
+  "generated_at_kst": "2026-06-01 07:57 KST",
   "asts": {
     "composite": 58.7,
     "phase": "LATE_CYCLE",
@@ -23,7 +23,8 @@
     "structural_crack": true,
     "momentum": {
       "latest": 58.7,
-      "n_points": 1
+      "n_points": 2,
+      "velocity_per_week": 0.0
     }
   }
 }

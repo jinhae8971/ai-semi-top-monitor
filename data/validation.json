@@ -1,6 +1,15 @@
 {
   "status": "accumulating",
-  "n_snapshots": 1,
-  "horizons": {},
-  "note": "스냅샷 누적 시작 - 검증은 5거래일 경과분부터 집계"
+  "n_snapshots": 2,
+  "horizons": {
+    "5": {
+      "n_matured": 0
+    },
+    "20": {
+      "n_matured": 0
+    },
+    "60": {
+      "n_matured": 0
+    }
+  }
 }
