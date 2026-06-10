@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-06-09T23:15:52.399218+00:00",
-  "generated_at_kst": "2026-06-10 08:15 KST",
-  "composite": 55.8,
+  "generated_at": "2026-06-10T23:23:34.320069+00:00",
+  "generated_at_kst": "2026-06-11 08:23 KST",
+  "composite": 55.2,
   "regime": {
     "name": "LATE_CYCLE",
     "emoji": "🟡",
@@ -56,62 +56,62 @@
       }
     },
     "valuation": {
-      "score": 89.3,
+      "score": 87.7,
       "weight": 0.1,
       "label": "밸류에이션",
       "detail": {
         "sox_fwd_pe_percentile": 90,
-        "sox_price_percentile_52w": 96.4,
-        "nvda_price_percentile_52w": 90.5
+        "sox_price_percentile_52w": 96.0,
+        "nvda_price_percentile_52w": 85.7
       }
     },
     "sentiment": {
-      "score": 46.8,
+      "score": 49.0,
       "weight": 0.1,
       "label": "센티먼트",
       "detail": {
         "win_days_in_23": 14,
-        "weekly_return_pct": -7.1,
-        "dist_above_200dma_pct": 61.7,
-        "vix": 19.9,
+        "weekly_return_pct": -12.0,
+        "dist_above_200dma_pct": 55.1,
+        "vix": 22.2,
         "smart_money_short": true,
         "etf_flow_state": "record_inflow"
       }
     },
     "technical": {
-      "score": 61.0,
+      "score": 49.2,
       "weight": 0.05,
       "label": "기술적/브레드스",
       "detail": {
-        "rsi14": 63.1,
-        "dist_above_200dma_pct": 61.7,
+        "rsi14": 54.3,
+        "dist_above_200dma_pct": 55.1,
         "breadth_divergence": false
       }
     }
   },
   "momentum": {
-    "latest": 55.8,
-    "n_points": 9,
-    "delta_7d": -3.5,
+    "latest": 55.2,
+    "n_points": 10,
+    "delta_7d": -4.5,
     "velocity_per_week": -4.2
   },
   "momentum_label": "↘️ 둔화 (-4.2/주)",
   "data_gaps": [],
   "breadth": {
     "basket_n": 25,
-    "pct_above_200dma": 100.0,
-    "pct_above_50dma": 92.0,
-    "net_new_highs_pct": 12.0,
+    "pct_above_200dma": 96.0,
+    "pct_above_50dma": 84.0,
+    "net_new_highs_pct": 8.0,
     "index_near_high": false,
     "divergence": false,
-    "breadth_score": 0.0
+    "breadth_score": 4.4
   },
   "validation": {
     "status": "accumulating",
-    "n_snapshots": 9,
+    "n_snapshots": 10,
     "horizons": {
       "5": {
-        "n_matured": 1
+        "n_matured": 2
       },
       "20": {
         "n_matured": 0
@@ -123,11 +123,6 @@
   },
   "catalysts": [
     {
-      "date": "2026-06-10",
-      "label": "CPI (5월)",
-      "type": "macro"
-    },
-    {
       "date": "2026-06-17",
       "label": "FOMC 결정",
       "type": "macro"
@@ -135,21 +130,21 @@
   ],
   "journal": [],
   "ytd": {
-    "Samsung Elec (005930)": 151.1,
-    "SK Hynix (000660)": 227.8,
-    "Micron (MU)": 196.8,
-    "SanDisk (SNDK)": 498.2,
-    "NVIDIA (NVDA)": 10.4,
-    "Intel (INTC)": 174.0
+    "Samsung Elec (005930)": 135.9,
+    "SK Hynix (000660)": 203.1,
+    "Micron (MU)": 182.9,
+    "SanDisk (SNDK)": 497.0,
+    "NVIDIA (NVDA)": 6.3,
+    "Intel (INTC)": 171.8
   },
   "fwd_pe": {
     "current": {
-      "Samsung Elec (005930)": 5.68,
-      "SK Hynix (000660)": 5.79,
-      "Micron (MU)": 8.55,
-      "SanDisk (SNDK)": 9.0,
-      "NVIDIA (NVDA)": 16.42,
-      "Intel (INTC)": 70.1
+      "Samsung Elec (005930)": 5.28,
+      "SK Hynix (000660)": 5.04,
+      "Micron (MU)": 8.0,
+      "SanDisk (SNDK)": 8.98,
+      "NVIDIA (NVDA)": 15.75,
+      "Intel (INTC)": 69.6
     },
     "history": [
       {
@@ -249,6 +244,17 @@
           "SanDisk (SNDK)": 9.0,
           "NVIDIA (NVDA)": 16.42,
           "Intel (INTC)": 70.1
+        }
+      },
+      {
+        "date": "2026-06-11",
+        "values": {
+          "Samsung Elec (005930)": 5.28,
+          "SK Hynix (000660)": 5.04,
+          "Micron (MU)": 8.0,
+          "SanDisk (SNDK)": 8.98,
+          "NVIDIA (NVDA)": 15.75,
+          "Intel (INTC)": 69.6
         }
       }
     ]
@@ -395,6 +401,21 @@
         "valuation": 89.3,
         "sentiment": 46.8,
         "technical": 61.0
+      }
+    },
+    {
+      "date": "2026-06-11",
+      "composite": 55.2,
+      "regime": "LATE_CYCLE",
+      "decisive_count": 0,
+      "structural_crack": true,
+      "categories": {
+        "capex": 32.0,
+        "supply_demand": 57.0,
+        "financing": 76.2,
+        "valuation": 87.7,
+        "sentiment": 49.0,
+        "technical": 49.2
       }
     }
   ]
