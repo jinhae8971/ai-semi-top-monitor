@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-06-14T23:04:51.554940+00:00",
-  "generated_at_kst": "2026-06-15 08:04 KST",
-  "composite": 57.9,
+  "generated_at": "2026-06-15T23:43:16.913399+00:00",
+  "generated_at_kst": "2026-06-16 08:43 KST",
+  "composite": 58.5,
   "regime": {
     "name": "LATE_CYCLE",
     "emoji": "🟡",
@@ -56,60 +56,60 @@
       }
     },
     "valuation": {
-      "score": 89.5,
+      "score": 91.1,
       "weight": 0.1,
       "label": "밸류에이션",
       "detail": {
         "sox_fwd_pe_percentile": 90,
-        "sox_price_percentile_52w": 98.8,
-        "nvda_price_percentile_52w": 88.5
+        "sox_price_percentile_52w": 100.0,
+        "nvda_price_percentile_52w": 92.5
       }
     },
     "sentiment": {
-      "score": 70.1,
+      "score": 74.5,
       "weight": 0.1,
       "label": "센티먼트",
       "detail": {
-        "win_days_in_23": 14,
-        "weekly_return_pct": 10.5,
-        "dist_above_200dma_pct": 69.2,
-        "vix": 17.7,
+        "win_days_in_23": 15,
+        "weekly_return_pct": 10.0,
+        "dist_above_200dma_pct": 77.3,
+        "vix": 16.2,
         "smart_money_short": true,
         "etf_flow_state": "record_inflow"
       }
     },
     "technical": {
-      "score": 57.3,
+      "score": 57.2,
       "weight": 0.05,
       "label": "기술적/브레드스",
       "detail": {
-        "rsi14": 60.4,
-        "dist_above_200dma_pct": 69.2,
+        "rsi14": 60.3,
+        "dist_above_200dma_pct": 77.3,
         "breadth_divergence": false
       }
     }
   },
   "momentum": {
-    "latest": 57.9,
-    "n_points": 12,
+    "latest": 58.5,
+    "n_points": 13,
     "delta_7d": 2.1,
-    "delta_30d": -0.8,
-    "velocity_per_week": 5.1
+    "delta_30d": -0.2,
+    "velocity_per_week": 4.2
   },
-  "momentum_label": "🚀 천장 향해 가속 (+5.1/주)",
+  "momentum_label": "↗️ 상승 (+4.2/주)",
   "data_gaps": [],
   "breadth": {
     "basket_n": 25,
     "pct_above_200dma": 96.0,
-    "pct_above_50dma": 88.0,
-    "net_new_highs_pct": 16.0,
-    "index_near_high": false,
+    "pct_above_50dma": 92.0,
+    "net_new_highs_pct": 40.0,
+    "index_near_high": true,
     "divergence": false,
     "breadth_score": 4.4
   },
   "validation": {
     "status": "accumulating",
-    "n_snapshots": 12,
+    "n_snapshots": 13,
     "horizons": {
       "5": {
         "n_matured": 6
@@ -131,21 +131,21 @@
   ],
   "journal": [],
   "ytd": {
-    "Samsung Elec (005930)": 151.5,
-    "SK Hynix (000660)": 218.2,
-    "Micron (MU)": 211.3,
-    "SanDisk (SNDK)": 619.4,
-    "NVIDIA (NVDA)": 8.8,
-    "Intel (INTC)": 216.3
+    "Samsung Elec (005930)": 162.8,
+    "SK Hynix (000660)": 238.6,
+    "Micron (MU)": 245.1,
+    "SanDisk (SNDK)": 665.8,
+    "NVIDIA (NVDA)": 12.6,
+    "Intel (INTC)": 224.7
   },
   "fwd_pe": {
     "current": {
-      "Samsung Elec (005930)": 5.61,
-      "SK Hynix (000660)": 5.24,
-      "Micron (MU)": 8.75,
-      "SanDisk (SNDK)": 10.82,
-      "NVIDIA (NVDA)": 16.12,
-      "Intel (INTC)": 80.8
+      "Samsung Elec (005930)": 5.87,
+      "SK Hynix (000660)": 5.57,
+      "Micron (MU)": 9.7,
+      "SanDisk (SNDK)": 11.52,
+      "NVIDIA (NVDA)": 16.69,
+      "Intel (INTC)": 82.94
     },
     "history": [
       {
@@ -278,6 +278,17 @@
           "SanDisk (SNDK)": 10.82,
           "NVIDIA (NVDA)": 16.12,
           "Intel (INTC)": 80.8
+        }
+      },
+      {
+        "date": "2026-06-16",
+        "values": {
+          "Samsung Elec (005930)": 5.87,
+          "SK Hynix (000660)": 5.57,
+          "Micron (MU)": 9.7,
+          "SanDisk (SNDK)": 11.52,
+          "NVIDIA (NVDA)": 16.69,
+          "Intel (INTC)": 82.94
         }
       }
     ]
@@ -469,6 +480,21 @@
         "valuation": 89.5,
         "sentiment": 70.1,
         "technical": 57.3
+      }
+    },
+    {
+      "date": "2026-06-16",
+      "composite": 58.5,
+      "regime": "LATE_CYCLE",
+      "decisive_count": 0,
+      "structural_crack": true,
+      "categories": {
+        "capex": 32.0,
+        "supply_demand": 57.0,
+        "financing": 76.2,
+        "valuation": 91.1,
+        "sentiment": 74.5,
+        "technical": 57.2
       }
     }
   ]
