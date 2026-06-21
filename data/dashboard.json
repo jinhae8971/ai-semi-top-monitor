@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-06-18T23:41:59.828809+00:00",
-  "generated_at_kst": "2026-06-19 08:41 KST",
+  "generated_at": "2026-06-21T23:09:26.352151+00:00",
+  "generated_at_kst": "2026-06-22 08:09 KST",
   "composite": 58.2,
   "regime": {
     "name": "LATE_CYCLE",
@@ -91,28 +91,28 @@
   },
   "momentum": {
     "latest": 58.2,
-    "n_points": 16,
-    "delta_7d": 2.5,
+    "n_points": 17,
+    "delta_7d": 0.3,
     "delta_30d": -0.5,
-    "velocity_per_week": 5.6
+    "velocity_per_week": 0.0
   },
-  "momentum_label": "🚀 천장 향해 가속 (+5.6/주)",
+  "momentum_label": "➡️ 횡보 (+0.0/주)",
   "data_gaps": [],
   "breadth": {
     "basket_n": 25,
     "pct_above_200dma": 96.0,
     "pct_above_50dma": 92.0,
-    "net_new_highs_pct": 56.0,
+    "net_new_highs_pct": 52.0,
     "index_near_high": true,
     "divergence": false,
     "breadth_score": 4.4
   },
   "validation": {
     "status": "accumulating",
-    "n_snapshots": 16,
+    "n_snapshots": 17,
     "horizons": {
       "5": {
-        "n_matured": 9
+        "n_matured": 11
       },
       "20": {
         "n_matured": 0
@@ -125,8 +125,8 @@
   "catalysts": [],
   "journal": [],
   "ytd": {
-    "Samsung Elec (005930)": 182.7,
-    "SK Hynix (000660)": 297.4,
+    "Samsung Elec (005930)": 176.1,
+    "SK Hynix (000660)": 309.1,
     "Micron (MU)": 259.7,
     "SanDisk (SNDK)": 693.8,
     "NVIDIA (NVDA)": 11.7,
@@ -134,12 +134,12 @@
   },
   "fwd_pe": {
     "current": {
-      "Samsung Elec (005930)": 6.25,
-      "SK Hynix (000660)": 6.49,
-      "Micron (MU)": 9.9,
+      "Samsung Elec (005930)": 6.1,
+      "SK Hynix (000660)": 6.68,
+      "Micron (MU)": 9.61,
       "SanDisk (SNDK)": 11.94,
       "NVIDIA (NVDA)": 16.55,
-      "Intel (INTC)": 86.7
+      "Intel (INTC)": 86.64
     },
     "history": [
       {
@@ -316,6 +316,17 @@
           "SanDisk (SNDK)": 11.94,
           "NVIDIA (NVDA)": 16.55,
           "Intel (INTC)": 86.7
+        }
+      },
+      {
+        "date": "2026-06-22",
+        "values": {
+          "Samsung Elec (005930)": 6.1,
+          "SK Hynix (000660)": 6.68,
+          "Micron (MU)": 9.61,
+          "SanDisk (SNDK)": 11.94,
+          "NVIDIA (NVDA)": 16.55,
+          "Intel (INTC)": 86.64
         }
       }
     ]
@@ -556,6 +567,21 @@
     },
     {
       "date": "2026-06-19",
+      "composite": 58.2,
+      "regime": "LATE_CYCLE",
+      "decisive_count": 0,
+      "structural_crack": true,
+      "categories": {
+        "capex": 32.0,
+        "supply_demand": 57.0,
+        "financing": 76.2,
+        "valuation": 90.6,
+        "sentiment": 72.2,
+        "technical": 56.7
+      }
+    },
+    {
+      "date": "2026-06-22",
       "composite": 58.2,
       "regime": "LATE_CYCLE",
       "decisive_count": 0,
