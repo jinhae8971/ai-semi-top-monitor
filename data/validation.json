@@ -1,6 +1,6 @@
 {
   "status": "accumulating",
-  "n_snapshots": 17,
+  "n_snapshots": 18,
   "horizons": {
     "5": {
       "n_matured": 11
