@@ -1,9 +1,15 @@
 {
-  "status": "accumulating",
-  "n_snapshots": 18,
+  "status": "validated",
+  "n_snapshots": 19,
   "horizons": {
     "5": {
-      "n_matured": 11
+      "n_matured": 12,
+      "corr": -0.934,
+      "split_threshold": 58.1,
+      "avg_fwd_high_pct": -9.08,
+      "avg_fwd_low_pct": 11.91,
+      "down_rate_high_pct": 100.0,
+      "working": true
     },
     "20": {
       "n_matured": 0
