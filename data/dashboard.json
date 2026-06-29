@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-06-28T22:59:14.444155+00:00",
-  "generated_at_kst": "2026-06-29 07:59 KST",
-  "composite": 54.9,
+  "generated_at": "2026-06-29T22:52:40.192723+00:00",
+  "generated_at_kst": "2026-06-30 07:52 KST",
+  "composite": 55.1,
   "regime": {
     "name": "LATE_CYCLE",
     "emoji": "🟡",
@@ -56,60 +56,60 @@
       }
     },
     "valuation": {
-      "score": 84.2,
+      "score": 85.6,
       "weight": 0.1,
       "label": "밸류에이션",
       "detail": {
         "sox_fwd_pe_percentile": 90,
-        "sox_price_percentile_52w": 95.2,
-        "nvda_price_percentile_52w": 75.0
+        "sox_price_percentile_52w": 98.0,
+        "nvda_price_percentile_52w": 76.6
       }
     },
     "sentiment": {
-      "score": 46.8,
+      "score": 47.9,
       "weight": 0.1,
       "label": "센티먼트",
       "detail": {
         "win_days_in_23": 13,
-        "weekly_return_pct": -7.7,
-        "dist_above_200dma_pct": 59.9,
-        "vix": 18.4,
+        "weekly_return_pct": -6.2,
+        "dist_above_200dma_pct": 65.7,
+        "vix": 17.6,
         "smart_money_short": true,
         "etf_flow_state": "record_inflow"
       }
     },
     "technical": {
-      "score": 52.8,
+      "score": 51.6,
       "weight": 0.05,
       "label": "기술적/브레드스",
       "detail": {
-        "rsi14": 57.0,
-        "dist_above_200dma_pct": 59.9,
+        "rsi14": 56.1,
+        "dist_above_200dma_pct": 65.7,
         "breadth_divergence": false
       }
     }
   },
   "momentum": {
-    "latest": 54.9,
-    "n_points": 22,
-    "delta_7d": -3.3,
-    "delta_30d": -3.8,
-    "velocity_per_week": -2.1
+    "latest": 55.1,
+    "n_points": 23,
+    "delta_7d": -3.5,
+    "delta_30d": -3.6,
+    "velocity_per_week": 1.4
   },
-  "momentum_label": "↘️ 둔화 (-2.1/주)",
+  "momentum_label": "➡️ 횡보 (+1.4/주)",
   "data_gaps": [],
   "breadth": {
     "basket_n": 25,
     "pct_above_200dma": 96.0,
-    "pct_above_50dma": 60.0,
-    "net_new_highs_pct": 0.0,
+    "pct_above_50dma": 64.0,
+    "net_new_highs_pct": 12.0,
     "index_near_high": false,
     "divergence": false,
     "breadth_score": 4.4
   },
   "validation": {
     "status": "validated",
-    "n_snapshots": 22,
+    "n_snapshots": 23,
     "horizons": {
       "5": {
         "n_matured": 16,
@@ -128,24 +128,30 @@
       }
     }
   },
-  "catalysts": [],
+  "catalysts": [
+    {
+      "date": "2026-07-14",
+      "label": "CPI (6월) ~",
+      "type": "macro"
+    }
+  ],
   "journal": [],
   "ytd": {
-    "Samsung Elec (005930)": 164.7,
-    "SK Hynix (000660)": 295.6,
-    "Micron (MU)": 259.1,
-    "SanDisk (SNDK)": 659.6,
-    "NVIDIA (NVDA)": 2.1,
-    "Intel (INTC)": 225.9
+    "Samsung Elec (005930)": 151.9,
+    "SK Hynix (000660)": 289.0,
+    "Micron (MU)": 263.2,
+    "SanDisk (SNDK)": 644.9,
+    "NVIDIA (NVDA)": 3.4,
+    "Intel (INTC)": 234.5
   },
   "fwd_pe": {
     "current": {
-      "Samsung Elec (005930)": 5.46,
-      "SK Hynix (000660)": 6.16,
-      "Micron (MU)": 7.61,
-      "SanDisk (SNDK)": 11.26,
-      "NVIDIA (NVDA)": 15.13,
-      "Intel (INTC)": 82.97
+      "Samsung Elec (005930)": 5.19,
+      "SK Hynix (000660)": 6.06,
+      "Micron (MU)": 7.67,
+      "SanDisk (SNDK)": 11.04,
+      "NVIDIA (NVDA)": 15.27,
+      "Intel (INTC)": 84.71
     },
     "history": [
       {
@@ -388,6 +394,17 @@
           "SanDisk (SNDK)": 11.26,
           "NVIDIA (NVDA)": 15.13,
           "Intel (INTC)": 82.97
+        }
+      },
+      {
+        "date": "2026-06-30",
+        "values": {
+          "Samsung Elec (005930)": 5.19,
+          "SK Hynix (000660)": 6.06,
+          "Micron (MU)": 7.67,
+          "SanDisk (SNDK)": 11.04,
+          "NVIDIA (NVDA)": 15.27,
+          "Intel (INTC)": 84.71
         }
       }
     ]
@@ -729,6 +746,21 @@
         "valuation": 84.2,
         "sentiment": 46.8,
         "technical": 52.8
+      }
+    },
+    {
+      "date": "2026-06-30",
+      "composite": 55.1,
+      "regime": "LATE_CYCLE",
+      "decisive_count": 0,
+      "structural_crack": true,
+      "categories": {
+        "capex": 32.0,
+        "supply_demand": 57.0,
+        "financing": 76.2,
+        "valuation": 85.6,
+        "sentiment": 47.9,
+        "technical": 51.6
       }
     }
   ]
