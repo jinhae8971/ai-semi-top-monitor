@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-06-29T22:52:40.192723+00:00",
-  "generated_at_kst": "2026-06-30 07:52 KST",
-  "composite": 55.1,
+  "generated_at": "2026-06-30T23:07:18.642688+00:00",
+  "generated_at_kst": "2026-07-01 08:07 KST",
+  "composite": 57.2,
   "regime": {
     "name": "LATE_CYCLE",
     "emoji": "🟡",
@@ -56,72 +56,72 @@
       }
     },
     "valuation": {
-      "score": 85.6,
+      "score": 88.0,
       "weight": 0.1,
       "label": "밸류에이션",
       "detail": {
         "sox_fwd_pe_percentile": 90,
-        "sox_price_percentile_52w": 98.0,
-        "nvda_price_percentile_52w": 76.6
+        "sox_price_percentile_52w": 99.6,
+        "nvda_price_percentile_52w": 82.5
       }
     },
     "sentiment": {
-      "score": 47.9,
+      "score": 64.3,
       "weight": 0.1,
       "label": "센티먼트",
       "detail": {
-        "win_days_in_23": 13,
-        "weekly_return_pct": -6.2,
-        "dist_above_200dma_pct": 65.7,
-        "vix": 17.6,
+        "win_days_in_23": 14,
+        "weekly_return_pct": 6.2,
+        "dist_above_200dma_pct": 71.9,
+        "vix": 16.5,
         "smart_money_short": true,
         "etf_flow_state": "record_inflow"
       }
     },
     "technical": {
-      "score": 51.6,
+      "score": 57.6,
       "weight": 0.05,
       "label": "기술적/브레드스",
       "detail": {
-        "rsi14": 56.1,
-        "dist_above_200dma_pct": 65.7,
+        "rsi14": 60.6,
+        "dist_above_200dma_pct": 71.9,
         "breadth_divergence": false
       }
     }
   },
   "momentum": {
-    "latest": 55.1,
-    "n_points": 23,
-    "delta_7d": -3.5,
-    "delta_30d": -3.6,
-    "velocity_per_week": 1.4
+    "latest": 57.2,
+    "n_points": 24,
+    "delta_7d": 1.8,
+    "delta_30d": -1.5,
+    "velocity_per_week": 14.7
   },
-  "momentum_label": "➡️ 횡보 (+1.4/주)",
+  "momentum_label": "🚀 천장 향해 가속 (+14.7/주)",
   "data_gaps": [],
   "breadth": {
     "basket_n": 25,
     "pct_above_200dma": 96.0,
-    "pct_above_50dma": 64.0,
-    "net_new_highs_pct": 12.0,
-    "index_near_high": false,
+    "pct_above_50dma": 68.0,
+    "net_new_highs_pct": 28.0,
+    "index_near_high": true,
     "divergence": false,
     "breadth_score": 4.4
   },
   "validation": {
     "status": "validated",
-    "n_snapshots": 23,
+    "n_snapshots": 24,
     "horizons": {
       "5": {
-        "n_matured": 16,
-        "corr": -0.9,
-        "split_threshold": 58.0,
-        "avg_fwd_high_pct": -8.44,
+        "n_matured": 17,
+        "corr": -0.899,
+        "split_threshold": 58.2,
+        "avg_fwd_high_pct": -8.38,
         "avg_fwd_low_pct": 8.19,
         "down_rate_high_pct": 100.0,
         "working": true
       },
       "20": {
-        "n_matured": 0
+        "n_matured": 1
       },
       "60": {
         "n_matured": 0
@@ -137,21 +137,21 @@
   ],
   "journal": [],
   "ytd": {
-    "Samsung Elec (005930)": 151.9,
-    "SK Hynix (000660)": 289.0,
-    "Micron (MU)": 263.2,
-    "SanDisk (SNDK)": 644.9,
-    "NVIDIA (NVDA)": 3.4,
-    "Intel (INTC)": 234.5
+    "Samsung Elec (005930)": 160.5,
+    "SK Hynix (000660)": 292.2,
+    "Micron (MU)": 266.1,
+    "SanDisk (SNDK)": 726.1,
+    "NVIDIA (NVDA)": 6.1,
+    "Intel (INTC)": 254.6
   },
   "fwd_pe": {
     "current": {
-      "Samsung Elec (005930)": 5.19,
-      "SK Hynix (000660)": 6.06,
-      "Micron (MU)": 7.67,
-      "SanDisk (SNDK)": 11.04,
-      "NVIDIA (NVDA)": 15.27,
-      "Intel (INTC)": 84.71
+      "Samsung Elec (005930)": 5.39,
+      "SK Hynix (000660)": 6.01,
+      "Micron (MU)": 7.71,
+      "SanDisk (SNDK)": 12.24,
+      "NVIDIA (NVDA)": 15.68,
+      "Intel (INTC)": 89.8
     },
     "history": [
       {
@@ -405,6 +405,17 @@
           "SanDisk (SNDK)": 11.04,
           "NVIDIA (NVDA)": 15.27,
           "Intel (INTC)": 84.71
+        }
+      },
+      {
+        "date": "2026-07-01",
+        "values": {
+          "Samsung Elec (005930)": 5.39,
+          "SK Hynix (000660)": 6.01,
+          "Micron (MU)": 7.71,
+          "SanDisk (SNDK)": 12.24,
+          "NVIDIA (NVDA)": 15.68,
+          "Intel (INTC)": 89.8
         }
       }
     ]
@@ -761,6 +772,21 @@
         "valuation": 85.6,
         "sentiment": 47.9,
         "technical": 51.6
+      }
+    },
+    {
+      "date": "2026-07-01",
+      "composite": 57.2,
+      "regime": "LATE_CYCLE",
+      "decisive_count": 0,
+      "structural_crack": true,
+      "categories": {
+        "capex": 32.0,
+        "supply_demand": 57.0,
+        "financing": 76.2,
+        "valuation": 88.0,
+        "sentiment": 64.3,
+        "technical": 57.6
       }
     }
   ]
