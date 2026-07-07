@@ -1,18 +1,18 @@
 {
   "status": "validated",
-  "n_snapshots": 28,
+  "n_snapshots": 29,
   "horizons": {
     "5": {
-      "n_matured": 21,
-      "corr": -0.591,
-      "split_threshold": 57.9,
+      "n_matured": 22,
+      "corr": -0.532,
+      "split_threshold": 57.6,
       "avg_fwd_high_pct": -5.95,
-      "avg_fwd_low_pct": 3.87,
+      "avg_fwd_low_pct": 3.15,
       "down_rate_high_pct": 81.8,
       "working": true
     },
     "20": {
-      "n_matured": 6
+      "n_matured": 7
     },
     "60": {
       "n_matured": 0

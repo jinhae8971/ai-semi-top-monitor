@@ -1,8 +1,8 @@
 {
-  "generated_at": "2026-07-06T23:03:38.710116+00:00",
-  "generated_at_kst": "2026-07-07 08:03 KST",
+  "generated_at": "2026-07-07T22:56:39.104467+00:00",
+  "generated_at_kst": "2026-07-08 07:56 KST",
   "asts": {
-    "composite": 55.2,
+    "composite": 54.8,
     "phase": "LATE_CYCLE",
     "emoji": "🟡",
     "color": "#eab308",
@@ -10,8 +10,8 @@
       "capex": 32.0,
       "supply_demand": 57.0,
       "financing": 76.2,
-      "valuation": 83.9,
-      "sentiment": 51.1,
+      "valuation": 83.1,
+      "sentiment": 48.0,
       "technical": 51.5
     },
     "decisive_triggers": {
@@ -22,11 +22,11 @@
     "decisive_count": 0,
     "structural_crack": true,
     "momentum": {
-      "latest": 55.2,
-      "n_points": 28,
-      "delta_7d": 0.1,
-      "delta_30d": -0.6,
-      "velocity_per_week": 1.4
+      "latest": 54.8,
+      "n_points": 29,
+      "delta_7d": -2.4,
+      "delta_30d": -1.0,
+      "velocity_per_week": -2.8
     }
   }
 }
