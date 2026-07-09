@@ -448,5 +448,20 @@
       "sentiment": 46.9,
       "technical": 51.5
     }
+  },
+  {
+    "date": "2026-07-10",
+    "composite": 55.4,
+    "regime": "LATE_CYCLE",
+    "decisive_count": 0,
+    "structural_crack": true,
+    "categories": {
+      "capex": 32.0,
+      "supply_demand": 57.0,
+      "financing": 76.2,
+      "valuation": 86.4,
+      "sentiment": 50.7,
+      "technical": 51.5
+    }
   }
 ]
