@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-07-12T22:42:33.877264+00:00",
-  "generated_at_kst": "2026-07-13 07:42 KST",
-  "composite": 56.2,
+  "generated_at": "2026-07-13T22:52:28.590771+00:00",
+  "generated_at_kst": "2026-07-14 07:52 KST",
+  "composite": 54.8,
   "regime": {
     "name": "LATE_CYCLE",
     "emoji": "🟡",
@@ -56,24 +56,24 @@
       }
     },
     "valuation": {
-      "score": 88.2,
+      "score": 84.9,
       "weight": 0.1,
       "label": "밸류에이션",
       "detail": {
         "sox_fwd_pe_percentile": 90,
-        "sox_price_percentile_52w": 92.5,
-        "nvda_price_percentile_52w": 91.3
+        "sox_price_percentile_52w": 88.5,
+        "nvda_price_percentile_52w": 84.5
       }
     },
     "sentiment": {
-      "score": 57.2,
+      "score": 46.5,
       "weight": 0.1,
       "label": "센티먼트",
       "detail": {
-        "win_days_in_23": 13,
-        "weekly_return_pct": 2.7,
-        "dist_above_200dma_pct": 51.5,
-        "vix": 15.0,
+        "win_days_in_23": 12,
+        "weekly_return_pct": -4.8,
+        "dist_above_200dma_pct": 43.8,
+        "vix": 17.2,
         "smart_money_short": true,
         "etf_flow_state": "record_inflow"
       }
@@ -83,33 +83,33 @@
       "weight": 0.05,
       "label": "기술적/브레드스",
       "detail": {
-        "rsi14": 41.2,
-        "dist_above_200dma_pct": 51.5,
+        "rsi14": 35.1,
+        "dist_above_200dma_pct": 43.8,
         "breadth_divergence": false
       }
     }
   },
   "momentum": {
-    "latest": 56.2,
-    "n_points": 32,
-    "delta_7d": 1.2,
-    "delta_30d": 0.5,
-    "velocity_per_week": 1.9
+    "latest": 54.8,
+    "n_points": 33,
+    "delta_7d": -0.4,
+    "delta_30d": -3.1,
+    "velocity_per_week": -9.8
   },
-  "momentum_label": "↗️ 상승 (+1.9/주)",
+  "momentum_label": "📉 급랭 (-9.8/주)",
   "data_gaps": [],
   "breadth": {
     "basket_n": 25,
     "pct_above_200dma": 96.0,
-    "pct_above_50dma": 64.0,
-    "net_new_highs_pct": 4.0,
+    "pct_above_50dma": 32.0,
+    "net_new_highs_pct": 0.0,
     "index_near_high": false,
     "divergence": false,
     "breadth_score": 4.4
   },
   "validation": {
     "status": "validated",
-    "n_snapshots": 32,
+    "n_snapshots": 33,
     "horizons": {
       "5": {
         "n_matured": 26,
@@ -137,21 +137,21 @@
   ],
   "journal": [],
   "ytd": {
-    "Samsung Elec (005930)": 122.2,
-    "SK Hynix (000660)": 222.7,
-    "Micron (MU)": 210.7,
-    "SanDisk (SNDK)": 596.1,
-    "NVIDIA (NVDA)": 11.8,
-    "Intel (INTC)": 178.9
+    "Samsung Elec (005930)": 98.5,
+    "SK Hynix (000660)": 173.1,
+    "Micron (MU)": 197.2,
+    "SanDisk (SNDK)": 508.2,
+    "NVIDIA (NVDA)": 7.9,
+    "Intel (INTC)": 161.9
   },
   "fwd_pe": {
     "current": {
-      "Samsung Elec (005930)": 4.38,
-      "SK Hynix (000660)": 4.86,
-      "Micron (MU)": 6.54,
-      "SanDisk (SNDK)": 9.37,
-      "NVIDIA (NVDA)": 16.49,
-      "Intel (INTC)": 69.75
+      "Samsung Elec (005930)": 3.91,
+      "SK Hynix (000660)": 4.08,
+      "Micron (MU)": 6.26,
+      "SanDisk (SNDK)": 8.04,
+      "NVIDIA (NVDA)": 15.91,
+      "Intel (INTC)": 65.09
     },
     "history": [
       {
@@ -504,6 +504,17 @@
           "SanDisk (SNDK)": 9.37,
           "NVIDIA (NVDA)": 16.49,
           "Intel (INTC)": 69.75
+        }
+      },
+      {
+        "date": "2026-07-14",
+        "values": {
+          "Samsung Elec (005930)": 3.91,
+          "SK Hynix (000660)": 4.08,
+          "Micron (MU)": 6.26,
+          "SanDisk (SNDK)": 8.04,
+          "NVIDIA (NVDA)": 15.91,
+          "Intel (INTC)": 65.09
         }
       }
     ]
@@ -994,6 +1005,21 @@
         "financing": 76.2,
         "valuation": 88.2,
         "sentiment": 57.2,
+        "technical": 51.5
+      }
+    },
+    {
+      "date": "2026-07-14",
+      "composite": 54.8,
+      "regime": "LATE_CYCLE",
+      "decisive_count": 0,
+      "structural_crack": true,
+      "categories": {
+        "capex": 32.0,
+        "supply_demand": 57.0,
+        "financing": 76.2,
+        "valuation": 84.9,
+        "sentiment": 46.5,
         "technical": 51.5
       }
     }
