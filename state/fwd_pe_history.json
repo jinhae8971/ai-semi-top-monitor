@@ -372,5 +372,16 @@
       "NVIDIA (NVDA)": 16.56,
       "Intel (INTC)": 68.02
     }
+  },
+  {
+    "date": "2026-07-16",
+    "values": {
+      "Samsung Elec (005930)": 4.28,
+      "SK Hynix (000660)": 4.6,
+      "Micron (MU)": 6.01,
+      "SanDisk (SNDK)": 7.77,
+      "NVIDIA (NVDA)": 16.6,
+      "Intel (INTC)": 64.67
+    }
   }
 ]

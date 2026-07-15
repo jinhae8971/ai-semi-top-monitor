@@ -1,21 +1,21 @@
 {
   "status": "validated",
-  "n_snapshots": 34,
+  "n_snapshots": 35,
   "horizons": {
     "5": {
-      "n_matured": 27,
-      "corr": -0.274,
-      "split_threshold": 56.8,
+      "n_matured": 28,
+      "corr": -0.234,
+      "split_threshold": 56.6,
       "avg_fwd_high_pct": -6.01,
-      "avg_fwd_low_pct": 0.24,
+      "avg_fwd_low_pct": -0.52,
       "down_rate_high_pct": 85.7,
       "working": true
     },
     "20": {
-      "n_matured": 12,
-      "corr": -0.191,
-      "split_threshold": 58.1,
-      "avg_fwd_high_pct": -4.7,
+      "n_matured": 13,
+      "corr": -0.255,
+      "split_threshold": 58.4,
+      "avg_fwd_high_pct": -7.09,
       "avg_fwd_low_pct": -6.42,
       "down_rate_high_pct": 100.0,
       "working": true
