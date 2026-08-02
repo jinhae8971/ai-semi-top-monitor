@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-07-30T23:00:56.067867+00:00",
-  "generated_at_kst": "2026-07-31 08:00 KST",
-  "composite": 53.8,
+  "generated_at": "2026-08-02T22:51:35.868199+00:00",
+  "generated_at_kst": "2026-08-03 07:51 KST",
+  "composite": 53.3,
   "regime": {
     "name": "LATE_CYCLE",
     "emoji": "🟡",
@@ -23,14 +23,14 @@
   "structural_crack": true,
   "categories": {
     "capex": {
-      "score": 32.0,
+      "score": 29.0,
       "weight": 0.3,
       "label": "Capex 사이클",
       "detail": {
-        "capex_growth_2nd_deriv_pp": 7.0,
-        "latest_yoy_growth_pct": 77.0,
+        "capex_growth_2nd_deriv_pp": 22.1,
+        "latest_yoy_growth_pct": 92.1,
         "guidance_direction": "raised",
-        "fcf_status": "compressing"
+        "fcf_status": "negative"
       }
     },
     "supply_demand": {
@@ -56,76 +56,76 @@
       }
     },
     "valuation": {
-      "score": 77.0,
+      "score": 79.7,
       "weight": 0.1,
       "label": "밸류에이션",
       "detail": {
         "sox_fwd_pe_percentile": 90,
         "sox_price_percentile_52w": 79.0,
-        "nvda_price_percentile_52w": 69.0
+        "nvda_price_percentile_52w": 77.8
       }
     },
     "sentiment": {
-      "score": 46.2,
+      "score": 47.7,
       "weight": 0.1,
       "label": "센티먼트",
       "detail": {
         "win_days_in_23": 10,
-        "weekly_return_pct": -8.5,
-        "dist_above_200dma_pct": 25.7,
-        "vix": 17.1,
+        "weekly_return_pct": -4.2,
+        "dist_above_200dma_pct": 25.4,
+        "vix": 16.0,
         "smart_money_short": true,
         "etf_flow_state": "record_inflow"
       }
     },
     "technical": {
-      "score": 47.2,
+      "score": 46.9,
       "weight": 0.05,
       "label": "기술적/브레드스",
       "detail": {
-        "rsi14": 34.8,
-        "dist_above_200dma_pct": 25.7,
+        "rsi14": 39.2,
+        "dist_above_200dma_pct": 25.4,
         "breadth_divergence": false
       }
     }
   },
   "momentum": {
-    "latest": 53.8,
-    "n_points": 46,
-    "delta_7d": -1.8,
-    "delta_30d": -3.4,
-    "velocity_per_week": 10.5
+    "latest": 53.3,
+    "n_points": 47,
+    "delta_7d": 2.0,
+    "delta_30d": -1.7,
+    "velocity_per_week": -1.2
   },
-  "momentum_label": "🚀 천장 향해 가속 (+10.5/주)",
+  "momentum_label": "➡️ 횡보 (-1.2/주)",
   "data_gaps": [],
   "breadth": {
     "basket_n": 25,
-    "pct_above_200dma": 92.0,
+    "pct_above_200dma": 84.0,
     "pct_above_50dma": 8.0,
     "net_new_highs_pct": 0.0,
     "index_near_high": false,
     "divergence": false,
-    "breadth_score": 8.8
+    "breadth_score": 17.6
   },
   "validation": {
     "status": "validated",
-    "n_snapshots": 46,
+    "n_snapshots": 47,
     "horizons": {
       "5": {
-        "n_matured": 39,
-        "corr": -0.138,
-        "split_threshold": 55.8,
-        "avg_fwd_high_pct": -2.74,
-        "avg_fwd_low_pct": -4.59,
-        "down_rate_high_pct": 75.0,
-        "working": true
+        "n_matured": 41,
+        "corr": -0.093,
+        "split_threshold": 55.7,
+        "avg_fwd_high_pct": -2.06,
+        "avg_fwd_low_pct": -6.06,
+        "down_rate_high_pct": 71.4,
+        "working": false
       },
       "20": {
-        "n_matured": 23,
-        "corr": 0.191,
-        "split_threshold": 57.4,
-        "avg_fwd_high_pct": -13.82,
-        "avg_fwd_low_pct": -14.4,
+        "n_matured": 25,
+        "corr": 0.167,
+        "split_threshold": 57.2,
+        "avg_fwd_high_pct": -15.27,
+        "avg_fwd_low_pct": -14.35,
         "down_rate_high_pct": 100.0,
         "working": false
       },
@@ -143,21 +143,21 @@
   ],
   "journal": [],
   "ytd": {
-    "Samsung Elec (005930)": 61.4,
-    "SK Hynix (000660)": 95.7,
-    "Micron (MU)": 177.5,
-    "SanDisk (SNDK)": 365.0,
-    "NVIDIA (NVDA)": 3.4,
-    "Intel (INTC)": 131.4
+    "Samsung Elec (005930)": 104.9,
+    "SK Hynix (000660)": 154.3,
+    "Micron (MU)": 161.1,
+    "SanDisk (SNDK)": 341.4,
+    "NVIDIA (NVDA)": 6.4,
+    "Intel (INTC)": 129.1
   },
   "fwd_pe": {
     "current": {
-      "Samsung Elec (005930)": 3.17,
-      "SK Hynix (000660)": 2.93,
-      "Micron (MU)": 5.69,
-      "SanDisk (SNDK)": 6.01,
-      "NVIDIA (NVDA)": 15.16,
-      "Intel (INTC)": 44.73
+      "Samsung Elec (005930)": 3.96,
+      "SK Hynix (000660)": 3.83,
+      "Micron (MU)": 5.29,
+      "SanDisk (SNDK)": 5.7,
+      "NVIDIA (NVDA)": 15.57,
+      "Intel (INTC)": 44.27
     },
     "history": [
       {
@@ -664,6 +664,17 @@
           "SanDisk (SNDK)": 6.01,
           "NVIDIA (NVDA)": 15.16,
           "Intel (INTC)": 44.73
+        }
+      },
+      {
+        "date": "2026-08-03",
+        "values": {
+          "Samsung Elec (005930)": 3.96,
+          "SK Hynix (000660)": 3.83,
+          "Micron (MU)": 5.29,
+          "SanDisk (SNDK)": 5.7,
+          "NVIDIA (NVDA)": 15.57,
+          "Intel (INTC)": 44.27
         }
       }
     ]
@@ -1365,6 +1376,21 @@
         "valuation": 77.0,
         "sentiment": 46.2,
         "technical": 47.2
+      }
+    },
+    {
+      "date": "2026-08-03",
+      "composite": 53.3,
+      "regime": "LATE_CYCLE",
+      "decisive_count": 0,
+      "structural_crack": true,
+      "categories": {
+        "capex": 29.0,
+        "supply_demand": 57.0,
+        "financing": 76.2,
+        "valuation": 79.7,
+        "sentiment": 47.7,
+        "technical": 46.9
       }
     }
   ]
