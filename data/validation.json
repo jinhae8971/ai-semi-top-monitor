@@ -1,6 +1,6 @@
 {
   "status": "validated",
-  "n_snapshots": 47,
+  "n_snapshots": 48,
   "horizons": {
     "5": {
       "n_matured": 41,
