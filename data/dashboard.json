@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-08-09T22:25:03.306554+00:00",
-  "generated_at_kst": "2026-08-10 07:25 KST",
-  "composite": 56.0,
+  "generated_at": "2026-08-10T22:32:27.589401+00:00",
+  "generated_at_kst": "2026-08-11 07:32 KST",
+  "composite": 55.2,
   "regime": {
     "name": "LATE_CYCLE",
     "emoji": "🟡",
@@ -56,60 +56,60 @@
       }
     },
     "valuation": {
-      "score": 88.1,
+      "score": 85.5,
       "weight": 0.1,
       "label": "밸류에이션",
       "detail": {
         "sox_fwd_pe_percentile": 90,
-        "sox_price_percentile_52w": 85.7,
-        "nvda_price_percentile_52w": 98.4
+        "sox_price_percentile_52w": 81.7,
+        "nvda_price_percentile_52w": 94.0
       }
     },
     "sentiment": {
-      "score": 65.1,
+      "score": 59.3,
       "weight": 0.1,
       "label": "센티먼트",
       "detail": {
-        "win_days_in_23": 12,
-        "weekly_return_pct": 7.6,
-        "dist_above_200dma_pct": 32.9,
-        "vix": 14.9,
+        "win_days_in_23": 11,
+        "weekly_return_pct": 4.3,
+        "dist_above_200dma_pct": 29.2,
+        "vix": 15.5,
         "smart_money_short": true,
         "etf_flow_state": "record_inflow"
       }
     },
     "technical": {
-      "score": 49.2,
+      "score": 50.7,
       "weight": 0.05,
       "label": "기술적/브레드스",
       "detail": {
-        "rsi14": 54.3,
-        "dist_above_200dma_pct": 32.9,
+        "rsi14": 44.4,
+        "dist_above_200dma_pct": 29.2,
         "breadth_divergence": false
       }
     }
   },
   "momentum": {
-    "latest": 56.0,
-    "n_points": 52,
-    "delta_7d": 2.7,
-    "delta_30d": 0.6,
-    "velocity_per_week": 1.2
+    "latest": 55.2,
+    "n_points": 53,
+    "delta_7d": 1.6,
+    "delta_30d": -1.0,
+    "velocity_per_week": -5.6
   },
-  "momentum_label": "➡️ 횡보 (+1.2/주)",
+  "momentum_label": "📉 급랭 (-5.6/주)",
   "data_gaps": [],
   "breadth": {
     "basket_n": 25,
-    "pct_above_200dma": 92.0,
+    "pct_above_200dma": 88.0,
     "pct_above_50dma": 16.0,
     "net_new_highs_pct": 0.0,
     "index_near_high": false,
     "divergence": false,
-    "breadth_score": 8.8
+    "breadth_score": 13.2
   },
   "validation": {
     "status": "validated",
-    "n_snapshots": 52,
+    "n_snapshots": 53,
     "horizons": {
       "5": {
         "n_matured": 46,
@@ -143,21 +143,21 @@
   ],
   "journal": [],
   "ytd": {
-    "Samsung Elec (005930)": 80.3,
-    "SK Hynix (000660)": 110.5,
-    "Micron (MU)": 178.4,
-    "SanDisk (SNDK)": 340.4,
-    "NVIDIA (NVDA)": 18.7,
-    "Intel (INTC)": 158.1
+    "Samsung Elec (005930)": 79.6,
+    "SK Hynix (000660)": 110.2,
+    "Micron (MU)": 173.1,
+    "SanDisk (SNDK)": 349.8,
+    "NVIDIA (NVDA)": 15.3,
+    "Intel (INTC)": 147.6
   },
   "fwd_pe": {
     "current": {
-      "Samsung Elec (005930)": 3.44,
-      "SK Hynix (000660)": 3.13,
-      "Micron (MU)": 5.66,
-      "SanDisk (SNDK)": 4.64,
-      "NVIDIA (NVDA)": 17.37,
-      "Intel (INTC)": 49.35
+      "Samsung Elec (005930)": 3.42,
+      "SK Hynix (000660)": 3.12,
+      "Micron (MU)": 5.56,
+      "SanDisk (SNDK)": 4.67,
+      "NVIDIA (NVDA)": 16.88,
+      "Intel (INTC)": 47.37
     },
     "history": [
       {
@@ -730,6 +730,17 @@
           "SanDisk (SNDK)": 4.64,
           "NVIDIA (NVDA)": 17.37,
           "Intel (INTC)": 49.35
+        }
+      },
+      {
+        "date": "2026-08-11",
+        "values": {
+          "Samsung Elec (005930)": 3.42,
+          "SK Hynix (000660)": 3.12,
+          "Micron (MU)": 5.56,
+          "SanDisk (SNDK)": 4.67,
+          "NVIDIA (NVDA)": 16.88,
+          "Intel (INTC)": 47.37
         }
       }
     ]
@@ -1521,6 +1532,21 @@
         "valuation": 88.1,
         "sentiment": 65.1,
         "technical": 49.2
+      }
+    },
+    {
+      "date": "2026-08-11",
+      "composite": 55.2,
+      "regime": "LATE_CYCLE",
+      "decisive_count": 0,
+      "structural_crack": true,
+      "categories": {
+        "capex": 29.0,
+        "supply_demand": 57.0,
+        "financing": 76.2,
+        "valuation": 85.5,
+        "sentiment": 59.3,
+        "technical": 50.7
       }
     }
   ]
