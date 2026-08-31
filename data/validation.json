@@ -1,6 +1,6 @@
 {
   "status": "validated",
-  "n_snapshots": 66,
+  "n_snapshots": 67,
   "horizons": {
     "5": {
       "n_matured": 61,
@@ -16,7 +16,7 @@
       "corr": -0.378,
       "split_threshold": 55.6,
       "avg_fwd_high_pct": -12.45,
-      "avg_fwd_low_pct": -6.43,
+      "avg_fwd_low_pct": -6.44,
       "down_rate_high_pct": 91.3,
       "working": true
     },
