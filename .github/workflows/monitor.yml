@@ -22,7 +22,7 @@ jobs:
       - run: pip install -r requirements.txt
       - name: Run cycle-top monitor
         env:
-          TELEGRAM_TOKEN:    ${{ secrets.TELEGRAM_TOKEN }}
+          TELEGRAM_TOKEN:    ${{ secrets.STOCK_BOT_TOKEN }}
           TELEGRAM_CHAT_ID:  ${{ secrets.TELEGRAM_CHAT_ID }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           TZ: "Asia/Seoul"
@@ -38,7 +38,7 @@ jobs:
       - name: Notify failure
         if: failure()
         env:
-          TELEGRAM_TOKEN:   ${{ secrets.TELEGRAM_TOKEN }}
+          TELEGRAM_TOKEN:   ${{ secrets.STOCK_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         run: |
           python - <<'EOF'
