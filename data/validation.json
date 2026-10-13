@@ -1,31 +1,31 @@
 {
   "status": "validated",
-  "n_snapshots": 97,
+  "n_snapshots": 98,
   "horizons": {
     "5": {
-      "n_matured": 90,
-      "corr": -0.244,
+      "n_matured": 92,
+      "corr": -0.23,
       "split_threshold": 55.0,
-      "avg_fwd_high_pct": -2.27,
-      "avg_fwd_low_pct": -0.13,
-      "down_rate_high_pct": 70.2,
+      "avg_fwd_high_pct": -2.53,
+      "avg_fwd_low_pct": -0.52,
+      "down_rate_high_pct": 70.8,
       "working": true
     },
     "20": {
-      "n_matured": 73,
-      "corr": -0.48,
+      "n_matured": 74,
+      "corr": -0.471,
       "split_threshold": 55.2,
       "avg_fwd_high_pct": -8.56,
-      "avg_fwd_low_pct": -1.09,
+      "avg_fwd_low_pct": -1.55,
       "down_rate_high_pct": 78.4,
       "working": true
     },
     "60": {
-      "n_matured": 31,
-      "corr": -0.701,
-      "split_threshold": 55.8,
-      "avg_fwd_high_pct": -19.94,
-      "avg_fwd_low_pct": -13.31,
+      "n_matured": 32,
+      "corr": -0.695,
+      "split_threshold": 56.0,
+      "avg_fwd_high_pct": -20.55,
+      "avg_fwd_low_pct": -13.61,
       "down_rate_high_pct": 100.0,
       "working": true
     }
