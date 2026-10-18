@@ -1,9 +1,9 @@
 name: AI Semi Cycle-Top Monitor
 
 on:
-  schedule:
-    # 평일 오전 7시 KST = 전날 22:00 UTC (일~목)
-    - cron: "0 22 * * 0-4"
+  # 2026-10-19 중지 — 스케줄 해제(재가동: 아래 두 줄 주석 해제)
+  # schedule:
+  #   - cron: "0 22 * * 0-4"
   workflow_dispatch:        # 수동 테스트용
 
 permissions:
